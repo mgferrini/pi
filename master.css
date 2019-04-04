@@ -1,0 +1,70 @@
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0px;
+}
+body{
+    max-width:960px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+}
+.regcontainer{
+    width:100%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.regformulario{
+    background-color: #F5F1E6;
+    padding-bottom: 20px;
+    padding-top:20px;
+}
+.regcolumna{
+    background-color: #CCCBCA;
+    border-right: solid white 20px;
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+.regh1{
+    font-size: 18px;
+    color: #B7AC9E    ;
+    font-family: 'Lato', sans-serif;
+    width:100%;
+    text-align: right;
+    text-transform: uppercase;
+border-bottom: solid 1px #CCCBCA  ;
+
+}
+.regtitulo{
+    font-size: 22px;
+    color: #B7AC9E    ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.regboton{
+    background-color: #B7AC9E ;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.regtitulo2{
+    font-size: 22px;
+    color: #474645  ;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+input:hover{
+    border: black 1px solid;
+}
+.regimg{
+    width: 100%;
+    margin-top: 10px; 
+}
+@media (max-width:768px){
+    .regcolumna{
+        border: none !important;
+        margin-top: 20px !important;
+    }
+    .regimg{
+        display:none;
+    }
+}
