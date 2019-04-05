@@ -8,6 +8,8 @@ body{
     font-size: 14px;
     font-family: 'Lato', sans-serif;
 }
+
+//VALERIA
 .regcontainer{
     width:100%;
     margin-left: 10%;
@@ -67,4 +69,62 @@ input:hover{
     .regimg{
         display:none;
     }
+}
+
+// IGNACIO
+.navbar-expand-lg{ /* Decoracion y posicionamiento navbar */
+  position: relative;
+  left: 400px;
+  width: 740px;
+  background-color: #CCCBCA !important;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  color: white !important;
+  font-size: 14px;
+}
+
+.navbar-light .navbar-nav .nav-link{/* Decoracion elementos del Navbar */
+  margin-left: 3px;
+  width: 116px;
+  text-align: center;
+  color:white;
+}
+.navbar-nav .dropdown-menu{ /*Fondo menu desplegable*/
+  background-color: #CCCBCA;
+}
+a {
+  color: white !important;
+}
+/*Colores solicitados al pasar el mouse sobre las pestañas. Nota-> "Tienda" va adentro de categorias por eso al pasar el mouse salta el color */
+.home:hover{
+ background-color:#228B22;
+}
+
+.consejos:hover{
+  background-color: #98FB98;
+}
+
+.q_s:hover{
+  background-color: #AFEEEE;
+}
+.q_s{
+  width: 100% !important;
+  text-align: center !important;
+  height: 42px;
+  position: relative;
+  right: 3px;
+}
+
+.tienda:hover{
+  background-color: #20B2AA;
+}
+
+.q_a:hover{
+  background-color:#B7AC9E;
+}
+
+h2{
+  font-family: 'Roboto';
+  font-size: 22px;
+  font-weight: 300;
 }
