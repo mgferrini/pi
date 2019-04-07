@@ -72,59 +72,97 @@ input:hover{
 }
 
 // IGNACIO
-.navbar-expand-lg{ /* Decoracion y posicionamiento navbar */
+.logo{
+  border;
   position: relative;
-  left: 400px;
-  width: 740px;
-  background-color: #CCCBCA !important;
-  font-family: 'Lato', sans-serif;
-  text-transform: uppercase;
-  color: white !important;
-  font-size: 14px;
+  right: 354px;
+  top: 1px;
+  border: solid 5px green;
+  display: block;
+  width: 99px;
+  border-radius: 60px;
 }
 
-.navbar-light .navbar-nav .nav-link{/* Decoracion elementos del Navbar */
-  margin-left: 3px;
-  width: 116px;
+.marca{
+  font-size: 20px;
+  display: inline;
+  position: relative;
+  color: green;
+  right: 183px;
+}
+
+.nav{
+  background-color: #999;
+  width: 100%;
+}
+
+.nav-link{
+  color: white;
+  border: solid 1px;
+  width: 240px;
   text-align: center;
+  text-transform: uppercase;
+}
+
+nav{
+  width: 100%;
+}
+
+.soap:hover{
+  background-color: #7ACB7A;
+  color: white;
+}
+
+.aceite:hover{
+  background-color: #99D1D1;
+  color: white;
+}
+
+.hidra:hover{
+  background-color: #20B2AA;
   color:white;
 }
-.navbar-nav .dropdown-menu{ /*Fondo menu desplegable*/
-  background-color: #CCCBCA;
-}
-a {
-  color: white !important;
-}
-/*Colores solicitados al pasar el mouse sobre las pestañas. Nota-> "Tienda" va adentro de categorias por eso al pasar el mouse salta el color */
-.home:hover{
- background-color:#228B22;
+
+.cap:hover{
+  background-color: #B7AC9E;
+  color: white;
 }
 
-.consejos:hover{
-  background-color: #98FB98;
+                                                    /* Inicio Footer */
+footer{
+  width: 100%;
+  background-color:#0009;
+  height: 205px;
+  margin-top: 5px !important;
 }
 
-.q_s:hover{
-  background-color: #AFEEEE;
-}
-.q_s{
-  width: 100% !important;
-  text-align: center !important;
-  height: 42px;
-  position: relative;
-  right: 3px;
+ul{
+  list-style-type: none;
 }
 
-.tienda:hover{
-  background-color: #20B2AA;
+.fin{
+  color: white;
+  float: left;
+  text-transform: uppercase;
+  border: solid 1px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 41px;
+  /*! margin-top: 5px !important; */
 }
 
-.q_a:hover{
-  background-color:#B7AC9E;
+
+.priva{
+  float: right;
+  border: solid;
+  text-transform: uppercase;
+  background-color: black;
+  border: none;
 }
 
-h2{
-  font-family: 'Roboto';
-  font-size: 22px;
-  font-weight: 300;
+.linea3{
+  clear: both;
+  border: solid;
+  color: red;
 }
