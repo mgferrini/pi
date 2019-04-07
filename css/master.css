@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 0 auto !important;
     padding: 0px;
 }
 body{
@@ -9,7 +9,7 @@ body{
     font-family: 'Lato', sans-serif;
 }
 
-//VALERIA
+/* VALERIA */
 .regcontainer{
     width:100%;
     margin-left: 10%;
@@ -71,11 +71,11 @@ input:hover{
     }
 }
 
-// IGNACIO
+/* IGNACIO */
 .logo{
   border;
   position: relative;
-  right: 354px;
+  /*right: 354px; */
   top: 1px;
   border: solid 5px green;
   display: block;
@@ -88,7 +88,7 @@ input:hover{
   display: inline;
   position: relative;
   color: green;
-  right: 183px;
+  right: -175px;
 }
 
 .nav{
