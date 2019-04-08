@@ -5,7 +5,7 @@
 	<ul>
 		<li><a class="fin contacto" href="#">Contacto</a></li>
 		<li><a class="fin q_s" href="#">Quienes Somos</a></li>
-		<li><a class="fin faq" href="#">Preguntas Frecuentes</a></li>
+		<li><a class="fin faq" href="?page=faq">Preguntas Frecuentes</a></li>
 		<li><a class="fin doc" href="#">Terminos y condiciones</a></li>
 		<li><a class="fin priva" href="#">Politica de privacidad</a></li>
 	</ul>
