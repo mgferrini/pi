@@ -1,6 +1,6 @@
 <section>
   <article class="col-lg-6">
-    <a class="logo" href="index.html"><img src="img/logo-phi2.png" alt="logo" title="" style="width: 90.2854px; height: 87.2075px; position: relative;" class="imageResizerChangedClass" width="inherit" height="inherit"></a>
+    <a class="logo" href="index.php"><img src="img/logo-phi2.png" alt="logo" title="" style="width: 90.2854px; height: 87.2075px; position: relative;" class="imageResizerChangedClass" width="inherit" height="inherit"></a>
     <h3 class="marca">Phi-Organic</h3>
   </article>
 </section>
