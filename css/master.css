@@ -1,24 +1,33 @@
+/*
+  - quitar el ancho de nav-link
+  - ponerle a nav-link un padding: 0 30px;
+  - a la ul que contiene el nav -> justify-content: right;
+*/
+
 *{
     box-sizing: border-box;
-    margin: 0 auto !important;
+    margin: 0 0;
     padding: 0px;
 }
 body{
-    max-width:960px;
+    max-width: 1200px;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
+    margin: 0 auto;
 }
-
-/* VALERIA */
+   /* Pagina de Registro */
 .regcontainer{
     width:100%;
-    margin-left: 10%;
-    margin-top: 2%;
+    clear: both;
+    padding-bottom: 50px;
+    padding-top: 70px;
 }
 .regformulario{
-    background-color: #F5F1E6;
+    background-color:#EBFAE3;
     padding-bottom: 20px;
     padding-top:20px;
+    width:450px;
+    text-align: center;
 }
 .regcolumna{
     background-color: #CCCBCA;
@@ -28,29 +37,30 @@ body{
 }
 .regh1{
     font-size: 18px;
-    color: #B7AC9E    ;
+    color: #474645   ;
     font-family: 'Lato', sans-serif;
     width:100%;
     text-align: right;
     text-transform: uppercase;
-border-bottom: solid 1px #CCCBCA  ;
+    border-bottom: solid 1px #CCCBCA;
+    padding-top: 30px;
 
 }
 .regtitulo{
     font-size: 22px;
-    color: #B7AC9E    ;
+    color: #474645   ;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 .regboton{
-    background-color: #B7AC9E ;
+    background-color: gray;
     color: white;
     font-size: 16px;
     text-transform: uppercase;
 }
 .regtitulo2{
     font-size: 22px;
-    color: #474645  ;
+    color: #474645;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
@@ -59,57 +69,84 @@ input:hover{
 }
 .regimg{
     width: 100%;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
-@media (max-width:768px){
-    .regcolumna{
-        border: none !important;
-        margin-top: 20px !important;
-    }
-    .regimg{
-        display:none;
-    }
-}
-
-/* IGNACIO */
-.logo{
-  border;
+.registro_position{/* Recuadro registrese */
   position: relative;
-  /*right: 354px; */
-  top: 1px;
-  border: solid 5px green;
-  display: block;
-  width: 99px;
-  border-radius: 60px;
+  left: 740px;
+  bottom: 390px;
 }
-
-.marca{
-  font-size: 20px;
-  display: inline;
+.registro_titulo {/* Esto esta porque misteriosamente no me tomaba el text-align: center; */
   position: relative;
-  color: green;
-  right: -175px;
+  left: 60px;
 }
 
-.nav{
-  background-color: #999;
-  width: 100%;
+.regimg{
+  display:none;
 }
+}
+/* End Pagina de Registro*/
 
+/* NAVBAR*/
+.headerCompleto{
+  background-color: white;
+  z-index: 5;
+  position: fixed;
+  line-height: 20px;
+  padding-top: 10px;
+}
+.navOrder{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.loginbar{
+  text-decoration: none;
+  padding: 0 20px;
+  color: black;
+}
+.loginbar1{
+  text-decoration: none;
+  margin: 0 20px;
+  color: black;
+  border: none !important;
+}
+.loginbar:hover{
+  color: #7ed957;
+}
+.loginbar1:hover{
+  color: #7ed957;
+}
+.navNacho{
+  display: flex;
+  background-color: white;
+  z-index: 5;
+  width:1200px;
+  line-height: 70px;
+  padding-top: 10px;
+}
+.marca0{
+  font-size: 40px;
+  color: #7ed957;
+  font-family: 'Cinzel', serif;
+  vertical-align: center;
+}
+.marca1{
+  font-size: 40px;
+  color: black;
+  font-family: 'Cinzel', serif;
+}
 .nav-link{
   color: white;
   border: solid 1px;
-  width: 240px;
+  width: 170px;
   text-align: center;
   text-transform: uppercase;
-}
-
-nav{
-  width: 100%;
+  background-color: #CCCBCA;
 }
 
 .soap:hover{
-  background-color: #7ACB7A;
+  background-color: #7ed957;
   color: white;
 }
 
@@ -127,52 +164,30 @@ nav{
   background-color: #B7AC9E;
   color: white;
 }
-
-                                                    /* Inicio Footer */
 footer{
   width: 100%;
-  background-color:#0009;
-  height: 205px;
-  margin-top: 5px !important;
 }
 
-ul{
+.footerRegistro{
   list-style-type: none;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
 }
-
-.fin{
-  color: white;
-  float: left;
-  text-transform: uppercase;
-  border: solid 1px;
-  display: block;
-  width: 100%;
-  text-align: center;
-  height: 41px;
-  /*! margin-top: 5px !important; */
-}
-
-
-.priva{
-  float: right;
-  border: solid;
-  text-transform: uppercase;
-  background-color: black;
-  border: none;
+.foot{
+  padding: 0 10px;
+  color: black;
 }
 
 .linea3{
   clear: both;
-  border: solid;
-  color: red;
+  border: solid 1px;
+  color:#7ed957;
 }
-
-/* ADELA */
-
-img {
-  width: 100%;
+.carousel-slide ,.carousel-fade{
+  margin-top: 147px;
 }
-
+  /* ADELA */
 .__soap-text.__style {
   color: #000;
   font-family: 'Lato', sans-serif;
@@ -184,13 +199,13 @@ img {
   margin-bottom: 10px;
   font-weight: bold;
   text-transform: uppercase;
+  color: white; /* Agregue el blanco asi se pueden ver los titulos del carousel */
 }
 
 .__soap-text p {
   font-size: 18px;
   margin-bottom: 10px;
   }
-
 
 .__soap-carousel .carousel-inner > * {
   min-height: 70vh;
@@ -223,7 +238,6 @@ img {
 
 .__soap-carousel .carousel-inner .carousel-item.slide1 {
   background-image: url("../img/soap_0010.jpg");
-
 }
 
 .__soap-carousel .carousel-inner .carousel-item.slide2 {
@@ -237,3 +251,168 @@ background-image: url("../img/soap_0022.jpg");
 .__soap-carousel .carousel-inner .carousel-item.slide4 {
     background-image: url("../img/soap_0059.jpg");
 }
+
+/* Media queries para los tamaños 931px, 897px, 768px, 567px y 420px */
+@media (max-width:931px) {
+  /* Mavbar */
+  .navbar.navbar-expand-lg.navbar-light {
+    position: relative;
+    right: 637px;
+    top: 108px;
+    margin-bottom: -60px;
+    width: 132%;
+    justify-content: left;
+  }
+  .nav-link{
+    width: 170px;
+  }
+
+  /* link a register */
+  .registro_position{
+    position: relative;
+    left: 420px;
+    width: 50%;
+    margin-left: 32px;
+  }
+  .registro_titulo {
+    position: relative;
+    left: 50px;
+  }
+}
+
+@media (max-width:897px) {
+  /* Mavbar */
+  .navbar.navbar-expand-lg.navbar-light {
+    position: relative;
+    right: 637px;
+    top: 108px;
+    margin-bottom: -60px;
+    width: 132%;
+    justify-content: left;
+  }
+  .nav-link{
+    width: 160px;
+  }
+
+  /* link a register */
+  .registro_position{
+    position: relative;
+    left: 394px;
+    bottom: 387px;
+    width: 51%;
+    margin-left: 32px;
+  }
+  .registro_titulo {
+    position: relative;
+    left: 40px;
+  }
+  }/* Fin 897px */
+
+@media (max-width:768px){
+  .regcolumna{
+    border: none !important;
+    margin-top: 20px !important;
+  }
+  /* navbar */
+  .nav-link{
+    width: 100%;
+    height: 33px;
+  }
+  .navbar.navbar-expand-lg.navbar-light {
+    position: relative;
+    right: 360px;
+    top: 108px;
+    margin-bottom: -60px;
+    width: 150%;
+    justify-content: left;
+  }
+  .navNacho{
+    width: 100%;
+    line-height: 15px;
+  }
+  .nav.nav-pills {
+    flex-direction: column;
+  }
+  .marca0, .marca1{
+    font-size: 20px;
+  }
+  /* footer */
+  .foot {
+    padding: 0 7px;
+  }
+  /* Pagina registro */
+  .registro_position{
+    position: relative;
+    left: 330px;
+    bottom: 383px;
+    width: 50%;
+    margin-left: 32px;
+  }
+  .registro_titulo {
+    position: relative;
+    left: 50px;
+    font-size: x-large;
+  }
+  } /* Fin 768px */
+
+@media (max-width:576px){
+  .marca1{
+    position: relative;
+  }
+
+  /* Navbar */
+  .navbar.navbar-expand-lg.navbar-light {
+    position: relative;
+    right: 315px;
+    top: 108px;
+    margin-bottom: -60px;
+    width: 180%;
+    justify-content: left;
+  }
+  .nav-link{
+    width: 160px;
+  }
+
+  /* link a register */
+  .registro_position{
+    position: relative;
+    left: 0px;
+    bottom: 20px;
+    width: 80%;
+    margin-left: 32px;
+  }
+
+  .registro_titulo {
+    position: relative;
+    left: 85px;
+  }
+  } /* Fin 576px */
+
+@media (max-width:420px){
+  .marca1{
+    position: relative;
+    left: 131px;
+    bottom: 51px;
+  }
+  .navbar.navbar-expand-lg.navbar-light {
+    position: relative;
+    right: 219px;
+    top: 108px;
+  }
+  .nav-link{
+    width: 160px;
+  }
+  .navNacho{
+    line-height: 11px;
+  }
+  .nav.nav-pills {
+    flex-direction: column;
+  }
+  .regformulario{
+    width: 359px;
+  }
+  .registro_titulo {
+    position: relative;
+    left: 37px;
+  }
+  } /* Fin 420px */
