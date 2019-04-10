@@ -173,24 +173,24 @@ img {
   width: 100%;
 }
 
-p {
-  color: #000;
-  font-size: 18px;
-
-}
-
 .__soap-text.__style {
   color: #000;
+  font-family: 'Lato', sans-serif;
   }
 
 .__soap-text h5 {
   font-size: 22px;
   letter-spacing: 6px;
-  font-family: 'Lato', sans-serif;
   margin-bottom: 10px;
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.__soap-text p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  }
+
 
 .__soap-carousel .carousel-inner > * {
   min-height: 70vh;
@@ -223,6 +223,7 @@ p {
 
 .__soap-carousel .carousel-inner .carousel-item.slide1 {
   background-image: url("../img/soap_0010.jpg");
+
 }
 
 .__soap-carousel .carousel-inner .carousel-item.slide2 {
@@ -236,4 +237,3 @@ background-image: url("../img/soap_0022.jpg");
 .__soap-carousel .carousel-inner .carousel-item.slide4 {
     background-image: url("../img/soap_0059.jpg");
 }
-
