@@ -1,19 +1,22 @@
-<div class="container-fluid regcontainer">
-    <section class="row">
-        <h1 class="regh1">Registro</h1>
-        <br><br>
-    </section>
-    <section class="space">
+<div class="container regcontainer">
+<section class="space">
+      <br><br><br><br>
+  </section>
+<section class="row">
+    <h1 class="regh1">Registro</h1>
+    <br><br>
+  </section>
+  <section class="space">
       <br>
-    </section>
-    <section class="registro row">
+  </section>
+  <section class="registro row">
         <article class="regcolumna col-xs-12 col-md-4 col-lg-4">
           <h2 class="regtitulo2"> ¿Ya tenés cuenta?</h2>
           <br>
-          <a class="btn regboton" href="#" role="button">Ingresar</a>
+          <a class="btn regboton" href="?page=login" role="button">Ingresar</a>
           <br><br>
-          <img src="img/regjabon1.png" alt="jabon_arte" class="regimg">
-        </article>   
+          <img src="img/soap_0001.jpg" alt="jabon_arte" class="regimg">
+        </article>
         <article class="form regformulario col-xs-12 col-md-8 col-lg-8">
           <h2 class="regtitulo">Ingresa tus datos para registrarte </h2><br>
           <form class="datosusuario" action="datosregistro.php" method="POST">
@@ -29,22 +32,22 @@
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="email">Email *</label>
-                  <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">Contraseña *</label>
-                  <input type="password" class="form-control" id="inputPassword4pass" name="password" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
                   <label for="fecha">Fecha de Nacimiento</label>
                    <input type="date" class="form-control" id="fecha" name="fecha">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="dni">Documento Nro.</label>
-                  <input type="text" class="form-control" id="dni" name="dni">
+                  <label for="email">Email *</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Contraseña *</label>
+                  <input type="password" class="form-control" id="inputPassword4pass" name="password" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Reconfirmar Contraseña *</label>
+                  <input type="password" class="form-control" id="inputPassword4pass" name="password" required>
                 </div>
               </div>
               <div class="form-group">
@@ -70,7 +73,7 @@
                       }
                     ?>
                     </select>
-                </div> 
+                </div>
                 <div class="form-group col-md-2">
                   <label for="inputZip">Código Postal</label>
                   <input type="text" class="form-control" id="inputZip">

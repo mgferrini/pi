@@ -9,7 +9,6 @@
 	<section class="registro row">
 		<div class="col-md-8 col-md-offset-4">
 			<article class="form regformulario col-xs-12 col-md-8 col-lg-8">
-
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h2 class="regtitulo">Usuario y Contraseña</h2><br>
@@ -31,16 +30,22 @@
 								<input class="btn btn-lg btn-success btn-block" type="submit" value="Ingresar">
 								<hr>
 								<div class="forgot">
-									<a href="?page=reset">Olvidaste tu clave? hace click aca!</a>
+									<a href="?page=reset">Olvide mi contraseña</a>
 								</div>
 							</fieldset>
 						</form>
 					</div>
 				</div>
-
 			</article>
-
 		</div>
 	</section>
 </div>
 </div>
+<section class="registro_position form regformulario col-xs-12 col-md-8 col-lg-8">
+	<article class="registro row">
+		<h2 class="registro_titulo">¿Acaso no estas registrado?</h2>
+		<p>Registrate para estar al tanto de las ultimas novedades acerca de los productos, los nuevos productos de Phi Organic, proximos lanzamientos y un monton de cosas mas.</p>
+		<br>
+		<a class="btn btn-lg btn-success btn-block" href="?page=registro">Registrarse</a>
+	</article>
+</section>
