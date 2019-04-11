@@ -26,8 +26,6 @@ body{
     background-color:#EBFAE3;
     padding-bottom: 20px;
     padding-top:20px;
-    width:450px;
-    text-align: center;
 }
 .regcolumna{
     background-color: #CCCBCA;
@@ -71,20 +69,8 @@ input:hover{
     width: 100%;
     margin-top: 10px;
 }
-.registro_position{/* Recuadro registrese */
-  position: relative;
-  left: 740px;
-  bottom: 390px;
-}
-.registro_titulo {/* Esto esta porque misteriosamente no me tomaba el text-align: center; */
-  position: relative;
-  left: 60px;
-}
 
-.regimg{
-  display:none;
-}
-}
+
 /* End Pagina de Registro*/
 
 /* NAVBAR*/
