@@ -1,16 +1,24 @@
+[Folders]
+..+AFw-c7+AFw-=1
+..+AFw-c7+AFw- - controladores=1
+
 [Open Files]
 Active File Display Mode=3
-Active File Index=1
-Open File Line0=0
-Open File Line1=0
-Open File Pos0=4549
-Open File Pos1=320
-Open File Window Pos0=0,1,-1,-1,-8,-31,104,104,870,478
-Open File Window Pos1=2,3,-1,-1,-8,-31,130,130,896,504
-Open File0=E:+AFw-xampp+AFw-htdocs+AFw-c6+AFw-formulario.php
-Open File1=E:+AFw-xampp+AFw-htdocs+AFw-c6+AFw-controladores+AFw-funciones.php
-Open File2=
+Active File Index=0
+Open File Line0=1591
+Open File Line1=1174
+Open File Line2=0
+Open File Pos0=2268
+Open File Pos1=1591
+Open File Pos2=186
+Open File Window Pos0=2,3,-1,-1,-8,-31,156,156,922,530
+Open File Window Pos1=0,1,-1,-1,-8,-31,182,182,948,556
+Open File Window Pos2=0,1,-1,-1,-8,-31,104,104,775,478
+Open File0=E:+AFw-xampp+AFw-htdocs+AFw-c7+AFw-registro.php
+Open File1=E:+AFw-xampp+AFw-htdocs+AFw-c7+AFw-controladores+AFw-funciones.php
+Open File2=E:+AFw-xampp+AFw-htdocs+AFw-c7+AFw-usuarios.json
+Open File3=
 Remember Files=1
 
 [Project Information]
-Project Start=E3070400010001000E0013002200000033
+Project Start=E3070400050005000E001B00090000002A

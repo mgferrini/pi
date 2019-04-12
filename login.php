@@ -1,14 +1,9 @@
-<div class="container-fluid regcontainer">
-	<section class="row">
-		<h1 class="regh1">Inicio de sesión</h1>
-		<br><br>
-	</section>
-	<section class="space">
-		<br>
-	</section>
+<div class="container regcontainer">
+  <section class="row">
+    <h1 class="regh1">Login</h1>
+  </section>
 	<section class="registro row">
-		<div class="col-md-8 col-md-offset-4">
-			<article class="form regformulario col-xs-12 col-md-8 col-lg-8">
+  		<article class="form regformulario col-md-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h2 class="regtitulo">Usuario y Contraseña</h2><br>
@@ -37,15 +32,11 @@
 					</div>
 				</div>
 			</article>
-		</div>
+      <article class="form regformulario col-md-5 offset-md-2">
+        <h2>¿Acaso no estas registrado?</h2>
+        <p>Registrate para estar al tanto de las ultimas novedades acerca de los productos, los nuevos productos de Phi Organic, proximos lanzamientos y un monton de cosas mas.</p>
+        <br>
+        <a class="btn btn-lg btn-success btn-block" href="?page=registro">Registrarse</a>
+      </article>
 	</section>
 </div>
-</div>
-<section class="registro_position form regformulario col-xs-12 col-md-8 col-lg-8">
-	<article class="registro row">
-		<h2 class="registro_titulo">¿Acaso no estas registrado?</h2>
-		<p>Registrate para estar al tanto de las ultimas novedades acerca de los productos, los nuevos productos de Phi Organic, proximos lanzamientos y un monton de cosas mas.</p>
-		<br>
-		<a class="btn btn-lg btn-success btn-block" href="?page=registro">Registrarse</a>
-	</article>
-</section>

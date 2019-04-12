@@ -1,0 +1,67 @@
+/* carousel */
+.carousel{
+  margin-top: 20px;
+}
+.__soap-text.__style {
+  color: #000;
+  font-family: 'Lato', sans-serif;
+  }
+
+.__soap-text h5 {
+  font-size: 22px;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;  /*Agregue el blanco asi se pueden ver los titulos del carousel */
+}
+
+.__soap-text p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.__soap-carousel .carousel-inner > * {
+  min-height: 500px;
+}
+
+.__soap-carousel .carousel-inner .carousel-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-align:center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  }
+
+.__soap-carousel .carousel-inner .carousel-item::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 0;
+  }
+
+
+.__soap-carousel .carousel-inner .carousel-item.slide1 {
+  background-image: url("../img/soap_0010.jpg");
+}
+
+.__soap-carousel .carousel-inner .carousel-item.slide2 {
+  background-image: url("../img/soap_0022.jpg");
+}
+
+.__soap-carousel .carousel-inner .carousel-item.slide3 {
+    background-image: url("../img/soap_0054.jpg");
+}
+
+.__soap-carousel .carousel-inner .carousel-item.slide4 {
+    background-image: url("../img/soap_0059.jpg");
+}
