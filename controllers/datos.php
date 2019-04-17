@@ -26,11 +26,11 @@ Articulos
 
 	$categorias=array();
 	$categorias[]= array(
-		"id" => "01" , "nombre" => "Jabones" );
+		"id" => "01" , "nombre" => "Jabones"    ,"top-banner"=>"imgTopBannerCat01", "background-img" => "imgFondo01.jpg", );
 	$categorias[]= array(
-		"id" => "02" , "nombre" => "Aceites" );
+		"id" => "02" , "nombre" => "Aceites"    ,"top-banner"=>"imgTopBannerCat02", "background-img" => "imgFondo02.jpg", );
 	$categorias[]= array(
-		"id" => "03" , "nombre" => "Hidratantes" );
+		"id" => "03" , "nombre" => "Hidratantes","top-banner"=>"imgTopBannerCat03", "background-img" => "imgFondo03.jpg", );
 
 	$articulos=array();
 	
@@ -72,21 +72,22 @@ Articulos
 		"id" => "303", "idCategoria" => "03", "nombre" => "Palta", "stock" => 10, "valor" => 303, "imagen" => "img/hidratantesManos.jpg", "descripcion" => "Hidratantes de Manos"
 	);
 	
-	
-	echo("<pre>");
-	
-	
+  /*
 	var_dump($categorias);
 	echo("<hr>");
 	var_dump($articulos);
-	echo("</pre>");
+  */
 	
 	function getCategorias(){
+    global $categorias;
 		return $categorias;
 	}
 	
 	function getArticulos( $idCategoria = "" ){
-		return $articulos;
+    global $articulos;
+     /* aca en el medio va el codigo para devolver solo un array con los articulos de la categoria elegida */
+    $articulosFiltrados = $articulos;
+		return $articulosFiltrados;
 	}
 	
 ?>

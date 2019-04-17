@@ -25,6 +25,7 @@ CTags Legacy Support=0
 7=contacto.php
 8=datos.php
 9=login.php
+10=registro.php
 [uemakeXp]
 ReleaseMode=0
 [Debug Settings]
@@ -36,4 +37,4 @@ Source Paths=
 [GroupU]
 0=css
 [FilesU - css]
-0=faq.css
+0=css+AFw-master.css

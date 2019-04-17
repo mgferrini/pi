@@ -1,0 +1,13 @@
+/* 
+  ##Device = Low Resolution Tablets
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .regcolumna{
+        border: none !important;
+        margin-top: 20px !important;
+    }
+    .regimg{
+        display:none;
+    }
+}

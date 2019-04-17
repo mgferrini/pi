@@ -1,13 +1,32 @@
+<?php
+include_once("controllers/funciones.php");
+
+/* hacerlo andar y que grabe el archivo de usuarios.
+if ($_POST){
+  $errores=validarRegistro($_POST);
+	if (count($errores)==0){
+		//$avatar = crearAvatar($_FILES);
+		$avatar = "";
+    $registro = crearRegistro($_POST, $avatar);
+    guardarRegistro($registro);
+    $error["success"]="Registro creado con exito";
+  }
+}
+*/
+?>
+
 <div class="container regcontainer">
-<section class="space">
-      <br><br><br><br>
-  </section>
-<section class="row">
+	
+	<?php if(isset($errores)):
+	  echo "<ul class='alert alert-danger text-center'>";
+	  foreach ($errores as $key => $value) :?>
+	    <li><?=$value;?> </li>
+	  <?php endforeach;
+	  echo "</ul>";
+  endif;?>
+  
+  <section class="row">
     <h1 class="regh1">Registro</h1>
-    <br><br>
-  </section>
-  <section class="space">
-      <br>
   </section>
   <section class="registro row">
         <article class="regcolumna col-xs-12 col-md-4 col-lg-4">
@@ -19,7 +38,7 @@
         </article>
         <article class="form regformulario col-xs-12 col-md-8 col-lg-8">
           <h2 class="regtitulo">Ingresa tus datos para registrarte </h2><br>
-          <form class="datosusuario" action="datosregistro.php" method="POST">
+          <form class="datosusuario" action="#" method="POST">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="nombre">Nombre *</label>
@@ -47,7 +66,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputPassword4">Reconfirmar Contraseña *</label>
-                  <input type="password" class="form-control" id="inputPassword4pass" name="password" required>
+                  <input type="password" class="form-control" id="inputPassword4pass" name="repassword" required>
                 </div>
               </div>
               <div class="form-group">
@@ -55,11 +74,11 @@
                 <input type="text" class="form-control" id="direccion" name="direccion">
               </div>
               <div class="form-row">
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-5">
                     <label for="ciudad">Ciudad</label>
                     <input type="text" class="form-control" id="ciudad" name="ciudad">
                   </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-5">
                   <label for="provincia">Provincia</label>
                   <select id="provincia" class="form-control" name="provincia">
                     <?php

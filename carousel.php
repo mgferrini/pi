@@ -1,7 +1,6 @@
 <!--carousel-->
-<div class="container-fluid p-0">
+<div>
   <section class="__soap-carousel">
-    <div class="bd-example">
       <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
@@ -39,6 +38,5 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-    </div>
   </section>
 </div>

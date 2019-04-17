@@ -1,7 +1,3 @@
-<?php
-echo("pages ina de contactp");
-?>
-
 <h2>
-	HOLA
+	Futura pagina donde nos van a enviar un e-mail
 </h2>
