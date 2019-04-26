@@ -1,22 +1,22 @@
 <footer class="footer">
-  <div class="mx-auto row">
-    <div col-xs-12 col-md-4>
-      <ul class="footer-group">
-        <li>
-          <i class="fab fa-facebook-f"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-pinterest"></i>
-          <i class="fab fa-youtube"></i>
-        </li>
-      </ul>
-    </div>
-    <div col-xs-12 col-md-4>
-      <ul class="footer-group">
+  <div class=" row">
+    <div class="col-md-12">
+      <ul class="footerPages">
         <li><a class="footer-item" href="?page=contacto">Contacto</a></li>
         <li><a class="footer-item" href="?page=nosotros">Quienes Somos</a></li>
         <li><a class="footer-item" href="?page=faq">Preguntas Frecuentes</a></li>
         <li><a class="footer-item" href="?page=tyc">Terminos y condiciones</a></li>
         <li><a class="footer-item" href="?page=politicas">Politica de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class=" row">
+    <div class="col-md-12">
+     <ul class="footsocial">
+        <li><a class="fab fa-facebook-f fa-2x foot-icon" href="" ></a></li>
+        <li><a class="fab fa-instagram fa-2x foot-icon" href=""></a></li>
+        <li> <a class="fab fa-pinterest fa-2x foot-icon" href=""></a></li>
+        <li><a class="fab fa-youtube fa-2x foot-icon" href=""></a></li>
       </ul>
     </div>
   </div>
