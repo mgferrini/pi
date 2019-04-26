@@ -1,7 +1,7 @@
 <!-- ESTE ARCHIVO NO SE TOCA -->
 
 <?php
-
+	ob_start(); 
 	require_once('controllers/funciones.php');
     
   if( ($_POST) && (isset($_POST["register"])) ){
@@ -40,5 +40,6 @@
 
 	include_once("footer.php");
 	include_once("pageEnd.php");
+	ob_end_flush();
 ?>
 </div>
