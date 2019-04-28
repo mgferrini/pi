@@ -19,6 +19,9 @@
 .navflecha:hover{
   color: #0bb791! important;
 }
+.navuser:hover{
+  color: #0bb791! important;
+}
 /*
 .navCont{
   display:flex;
