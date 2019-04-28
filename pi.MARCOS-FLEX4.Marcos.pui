@@ -2,38 +2,40 @@
 ..+AFw-c7+AFw- - controladores=1
 ..+AFw-c7+AFw- - css=1
 css=1
+.+AFw-=1
+.+AFw- - controllers=1
 
 [Open Files]
-Active File Display Mode=3
-Active File Index=4
-Open File Line0=0
-Open File Line1=0
-Open File Line2=346
+Active File Display Mode=1
+Active File Index=5
+Open File Line0=2278
+Open File Line1=66
+Open File Line2=5392
 Open File Line3=0
 Open File Line4=0
 Open File Line5=0
-Open File Pos0=88
-Open File Pos1=84
-Open File Pos2=813
-Open File Pos3=6
-Open File Pos4=419
-Open File Pos5=9
-Open File Window Pos0=0,1,-1,-1,-9,-38,64,64,746,518
-Open File Window Pos1=0,1,-1,-1,-9,-38,96,96,794,544
-Open File Window Pos2=0,1,-1,-1,-9,-38,128,128,819,570
-Open File Window Pos3=0,1,-1,-1,-9,-38,160,160,845,595
-Open File Window Pos4=2,3,-1,-1,-9,-38,192,192,870,621
-Open File Window Pos5=0,1,-1,-1,-9,-38,224,224,896,646
-Open File0=.+AFw-index.php
-Open File1=E:+AFw-xampp+AFw-htdocs+AFw-pi+AFw-controllers+AFw-funciones.php
-Open File2=E:+AFw-xampp+AFw-htdocs+AFw-pi+AFw-controllers+AFw-usuarios.php
-Open File3=.+AFw-registro.php
-Open File4=E:+AFw-xampp+AFw-htdocs+AFw-pi+AFw-categoria.php
-Open File5=.+AFw-navbar.php
+Open File Pos0=2680
+Open File Pos1=976
+Open File Pos2=5797
+Open File Pos3=169
+Open File Pos4=120
+Open File Pos5=163
+Open File Window Pos0=0,1,-1,-1,-1,-1,5,31,946,701
+Open File Window Pos1=0,1,-1,-1,-1,-1,5,31,946,701
+Open File Window Pos2=0,1,-1,-1,-1,-1,5,31,946,701
+Open File Window Pos3=0,1,-1,-1,-1,-1,5,31,946,701
+Open File Window Pos4=0,1,-1,-1,-1,-1,5,31,946,701
+Open File Window Pos5=0,1,-1,-1,-1,-1,5,31,946,701
+Open File0=.+AFw-perfil.php
+Open File1=.+AFw-login.php
+Open File2=.+AFw-registro.php
+Open File3=.+AFw-controllers+AFw-funciones.php
+Open File4=C:+AFw-Users+AFw-Marcos+AFw-Documents+AFw-Downloads+AFw-pi-vale-new+AFw-usuarios.json
+Open File5=.+AFw-usuarios.json
 Open File6=
 Remember Files=1
 
 [Project Information]
-Project Start=E3070400050005000E001B00090000002A
-Working Time=24
+Project Start=01080600040011000A0024001300000065
+Working Time=300
 

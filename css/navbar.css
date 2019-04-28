@@ -1,11 +1,16 @@
 /* NAVBAR */
-.marca0{
-  font-size: 20px;
-  color: #7ed957;
-  font-family: 'Cinzel', serif;
+.regcontainer{
+  width: 100%;
+  clear:both;
 }
-.marca1{
-  font-size: 20px;
-  color: black;
-  font-family: 'Cinzel', serif;
+.navCat{
+  color: #474645;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: -40px;
+  margin-right: 20px;
+}
+.navCat:hover{
+  color: #0bb791! important;
 }

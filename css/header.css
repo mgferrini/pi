@@ -1,11 +1,43 @@
 /* Header */
+.navflecha{
+  color: #474645;
+  margin-right: 20px;
+}
+.icon{
+  color: #474645;
+}
+.navuser{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #474645;
+  font-style: normal;
+}
+.icon:hover{
+  color: #0bb791! important;
+}
+.navflecha:hover{
+  color: #0bb791! important;
+}
+.navCont{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 0px;
+}
+.navcart{  
+  margin-right: 20px; 
+}
+.fa-user-plus{
+  margin-left: 20px;
+}
 .navOrder{
   display:flex;
   flex-direction: row;
   justify-content: flex-end;
   font-size: large;
 }
-
+/*
 .loginbar{
   text-decoration: none;
   padding: 0 20px;
@@ -23,4 +55,7 @@
 }
 .loginbar1:hover{
   color: #7ed957;
-}
+}*/
+
+
+

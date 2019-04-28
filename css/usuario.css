@@ -2,23 +2,18 @@
 .regcontainer{
     width:100%;
     clear: both;
-    padding-bottom: 50px;
-    padding-top: 20px;
 }
-
 .regformulario{
-    background-color:#EBFAE3  ;
+    background-color: #E1FAEC;
     padding-bottom: 20px;
     padding-top:20px;
 }
-
 .regcolumna{
-    background-color: #CCCBCA;
+    background-color: whitesmoke;
     border-right: solid white 20px;
     padding-top:20px;
     padding-bottom: 20px;
 }
-
 .regh1{
     font-size: 18px;
     color: #474645   ;
@@ -26,21 +21,23 @@
     width:100%;
     text-align: right;
     text-transform: uppercase;
-    border-bottom: solid 1px #CCCBCA  ;
+    border-bottom: solid 1px #0bb791;
     padding-top: 30px;
-
+    padding-bottom: 20px; 
+    margin-bottom: 20px; 
 }
 .regtitulo{
     font-size: 22px;
-    color: #474645   ;
+    color: #474645;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 .regboton{
-    background-color: gray ;
+    background-color:#ABB2B9 ;
     color: white;
     font-size: 16px;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 .regtitulo2{
     font-size: 22px;
@@ -54,4 +51,16 @@ input:hover{
 .regimg{
     width: 100%;
     margin-top: 10px; 
+}
+.regTextoImagen{
+    text-align: center,
+}
+.regSubirAvatar{  
+    margin-top: 10px; 
+    margin-bottom: 15px; 
+    width:50%;
+}
+.regboton:hover{
+    background-color: white ;
+    color: #0bb791;
 }

@@ -1,18 +1,36 @@
 .footer{
   margin-top : 20px;
+  border-top: solid 1px #0bb791;
 }
-.footer-group{
+.footsocial{
+  margin-top: 15px;
   list-style-type: none;
   display:flex;
   flex-direction: row;
   justify-content: center;
 }
+.footerPages{
+  margin-top: 30px;
+  list-style-type: none;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 14px;
+}
 .footer-item{
   padding: 0 10px;
-  color: black;
+  color:#474645;
 }
-
-.fab{
-  font-size: x-large;
-  padding-right: 15px;
+.foot-icon{
+  color: #474645;
+  margin-right: 20px;
+  padding: 0 10px;
+}
+.foot-icon:hover{
+  color:#0bb791;
+  text-decoration: none;
+}
+.footer-item:hover{
+  color:#0bb791;
+text-decoration: none;
 }
