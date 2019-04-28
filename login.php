@@ -101,7 +101,7 @@ function buscarDatos($usuarios, $email){// aca tenes que ir a buscar el usuario 
 										<input name="remember" type="checkbox" value="Remember Me"> Recordarme
 									</label>
 								</div>
-								<input class="btn btn-lg btn-success btn-block" type="submit" value="Ingresar">
+								<input class="btn regboton" type="submit" value="Ingresar">
 								<hr>
 								<div class="forgot">
 									<a href="?page=reset">Olvide mi contraseña</a>
@@ -112,10 +112,10 @@ function buscarDatos($usuarios, $email){// aca tenes que ir a buscar el usuario 
 				</div>
 			</article>
       <article class="form regformulario col-md-5 offset-md-2">
-        <h2>¿Acaso no estas registrado?</h2>
+        <h2 class="regtitulo2">¿Acaso no estas registrado?</h2>
         <p>Registrate para estar al tanto de las ultimas novedades acerca de los productos, los nuevos productos de Phi Organic, proximos lanzamientos y un monton de cosas mas.</p>
         <br>
-        <a class="btn btn-lg btn-success btn-block" href="?page=registro">Registrarse</a>
+        <a class="btn regboton" href="?page=registro">Registrarse</a>
       </article>
 	</section>
 </div>
