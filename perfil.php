@@ -95,7 +95,7 @@ function guardar($datos){
 			"perfil"=>$usuario["perfil"],
 			];
 
-			if($_FILES["avatar"]["error"]=0){
+			if($_FILES["avatar"]["error"]==0){
 				$nombre = $_FILES["avatar"]["name"];
 				$ext = pathinfo($nombre,PATHINFO_EXTENSION);
 				$archivoOrigen = $_FILES["avatar"]["tmp_name"];
@@ -107,18 +107,14 @@ function guardar($datos){
 				move_uploaded_file($archivoOrigen,$archivoDestino);
 				$avatar = $avatar.".".$ext;
 				
-				$usuarionuevo["avatar"]= $avatar;
-				
+				$usuarionuevo["avatar"]= $avatar;	
 			}
 			
-			var_dump($usuarionuevo);
-
 			$_SESSION["nombre"]=$usuarionuevo["nombre"];
 			$_SESSION["email"]=$usuarionuevo["email"];
 			$_SESSION["avatar"]=$usuarionuevo["avatar"];
 			$_SESSION["perfil"]=$usuarionuevo["perfil"];
-
-
+			
 		}else{
 			$usuarionuevo=$usuario;
 		}
