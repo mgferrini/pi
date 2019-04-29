@@ -16,3 +16,13 @@
 .navPhi{
   margin-top:-100px;
 }
+.iconnav{
+  background: transparent;
+  border: none;
+}
+.bordernav{
+  border-bottom: #474645 solid 1px;
+}
+.iconnav:hover{
+  color: #0bb791! important;
+}
