@@ -27,8 +27,8 @@
           </li>
           <li class="nav-item navCat">
             <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-1 icon" type="search" placeholder="" aria-label="Search">
-              <a class="fas fa-search nav-item fa-lg icon" type="submit" ></a>
+              <input class="form-control mr-sm-1 iconnav bordernav" type="search" placeholder="" aria-label="Search">
+              <a class="fas fa-search nav-item fa-lg iconnav" type="submit" ></a>
             </form>
           </li>
         </ul>
