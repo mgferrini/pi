@@ -1,4 +1,3 @@
-<div class='container-fluid'>
 <div class="row">
   <div class="col-md-3">
     <a class="logo" href="index.php"><img src="img/logo_hoja.png" width="300" alt="logo" ></a>    
@@ -32,5 +31,4 @@
 	  	</div>
 		</nav>
  	</div>	
-</div>
 </div>
