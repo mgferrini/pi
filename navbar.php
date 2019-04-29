@@ -12,7 +12,7 @@
         <span class="navbar-toggler-icon"></span>
         </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav navPhi">
           <li class="nav-item">
             <a class="nav-link navCat" href="">JABONES</a>
           </li>
