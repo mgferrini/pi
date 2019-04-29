@@ -22,8 +22,8 @@
     text-align: right;
     text-transform: uppercase;
     border-bottom: solid 1px #0bb791;
-    padding-bottom: 20px; 
-    margin-bottom: 20px; 
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 .regtitulo{
     font-size: 22px;
@@ -44,19 +44,19 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
-input:hover{
+/* input:hover{
     border: black 1px solid;
-}
+} */
 .regimg{
     width: 100%;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 .regTextoImagen{
     text-align: center,
 }
-.regSubirAvatar{  
-    margin-top: 10px; 
-    margin-bottom: 15px; 
+.regSubirAvatar{
+    margin-top: 10px;
+    margin-bottom: 15px;
     width:50%;
 }
 .regboton:hover{
