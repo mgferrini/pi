@@ -1,39 +1,40 @@
 <?php
-include_once("controllers/funciones.php");
+include_once("autoload.php");
 if ($_POST) {
-  $errores=validarLogin($_POST);
-  if (count($errores)==0) {
-    header("location:index.php");
-  }
-}
+  $usuario=new Usuario($_POST["email"],$_POST["password"]);
+  $errores=$validar->validarLogin($usuario);
+  // if (count($errores)==0) {
+  //   header("location:index.php");
+  // }
 if (isset($_SESSION["nombre"])) {
   header("location: index.php");
 }
 
-function validarLogin($datos){
-  $errores=[];
-  $email=trim($datos['email']);
-  if ($email=="") {
-    $errores[]="Complete este campo <br>";
-  }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-    $errores[]="El email ingresado no es el correcto <br>";
-  }
-  $password=trim($datos["password"]);
-  if ($password=="") {
-    $errores[]="Ingrese una clave <br>";
-  }
-  $usuariosTodos = abrirRegistro();
-  $resultado = buscarDatos($usuariosTodos,$email);
+  // $errores=[];
+  // $email=trim($datos['email']);
+  // if ($email=="") {
+  //   $errores[]="Complete este campo <br>";
+  // }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+  //   $errores[]="El email ingresado no es el correcto <br>";
+  // }
+  // $password=trim($datos["password"]);
+  // if ($password=="") {
+  //   $errores[]="Ingrese una clave <br>";
+  // }
+  $usuariosTodos=$dbJSON->abrirRegistro();
+  dd($usuariosTodos);
+  $resultado = $dbJSON->buscarDatos($usuariosTodos,$email);
   if($resultado){
     if(password_verify($datos["password"],$resultado["password"])==true){
-      //Grabar sesiones
-      $_SESSION["nombre"]=$resultado["nombre"];
-      $_SESSION["email"]=$resultado["email"];
-      $_SESSION["avatar"]=$resultado["avatar"];
-      $_SESSION["perfil"]=$resultado["perfil"];
+      Autenticador::seteoUsuario();
+      // $_SESSION["nombre"]=$resultado["nombre"];
+      // $_SESSION["email"]=$resultado["email"];
+      // $_SESSION["avatar"]=$resultado["avatar"];
+      // $_SESSION["perfil"]=$resultado["perfil"];
       if (isset($datos["remember"])) {
-        setcookie("email",$datos["email"], time() + 60*60*24);
-        setcookie("password", $datos["password"], time()+ 60*60*24);
+        Autenticador::seteoCookies();
+        // setcookie("email",$datos["email"], time() + 60*60*24);
+        // setcookie("password", $datos["password"], time()+ 60*60*24);
       }
     }else {
       $errores[]="Clave Incorrecta <br>";
@@ -46,33 +47,29 @@ function validarLogin($datos){
   echo "</p>";
 }
 
-function abrirRegistro(){
-  if(!file_exists('usuarios.json')){
-    file_put_contents('usuarios.json',PHP_EOL, FILE_APPEND);
-  }
-  $traer= file_get_contents("usuarios.json");//Traer el archivo
-  $db = explode(PHP_EOL, $traer);//aca lo separas
-  array_pop($db);//Sacas el ultimo elemento
-  foreach ($db as $usuarioCodificado) {//despues recorres lo que cambiaste y lo guardas en una variable
-    $decodificado=json_decode($usuarioCodificado, true);//Y esa variable la decodificas
-    $usuarios[]=$decodificado;// despues poner sus datos en alguna variable
-  }
-  return $usuarios;// abrirRegistro(); esta funcion podria devolverte un array con el usuario si lo encontro
-}
+// function abrirRegistro(){
+//   if(!file_exists('usuarios.json')){
+//     file_put_contents('usuarios.json',PHP_EOL, FILE_APPEND);
+//   }
+//   $traer= file_get_contents("usuarios.json");
+//   $db = explode(PHP_EOL, $traer);
+//   array_pop($db);
+//   foreach ($db as $usuarioCodificado) {
+//     $decodificado=json_decode($usuarioCodificado, true);
+//     $usuarios[]=$decodificado;
+//   }
+//   return $usuarios;
+// }
 
-function buscarDatos($usuarios, $email){// aca tenes que ir a buscar el usuario en el archivo json
-  foreach ($usuarios as $usuario) {
-    if ($email == $usuario["email"]) {
-      return $usuario;
-      break;
-    }
-  }
-}
-// para que puedas seguir con la validacion del email y la contraseña
-// y sino devolver NULL, entonces preguntas por ese valor que te devuelve y actuas en consecuencia
-?>
+// function buscarDatos($usuarios, $email){
+//   foreach ($usuarios as $usuario) {
+//     if ($email == $usuario["email"]) {
+//       return $usuario;
+//       break;
+//     }
+//   }
+// }
 
-<?php
 if(isset($errores)){
   foreach ($errores as $value) {
     echo $value;
