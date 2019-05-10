@@ -8,7 +8,7 @@ if ($_POST){
 		$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
 		$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
 		$usuario -> guardar($registroUsuario) ;
-	//	Sesion::seteoUsuario($usuario,$_POST);      TODAVIA NO INTENTE HACERLO
+	//	Autenticador::seteoUsuario($usuario,$_POST);      TODAVIA NO INTENTE HACERLO
 	redirect("index.php");
 	}
 }
