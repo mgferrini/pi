@@ -1,79 +1,34 @@
 <?php
-include_once("autoload.php");
-if ($_POST) {
+include_once("controllers/funciones.php");
+if ($_POST){
   $usuario=new Usuario($_POST["email"],$_POST["password"]);
-  $errores=$validar->validarLogin($usuario);
-  // if (count($errores)==0) {
-  //   header("location:index.php");
-  // }
-if (isset($_SESSION["nombre"])) {
-  header("location: index.php");
-}
-
-  // $errores=[];
-  // $email=trim($datos['email']);
-  // if ($email=="") {
-  //   $errores[]="Complete este campo <br>";
-  // }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-  //   $errores[]="El email ingresado no es el correcto <br>";
-  // }
-  // $password=trim($datos["password"]);
-  // if ($password=="") {
-  //   $errores[]="Ingrese una clave <br>";
-  // }
-  $usuariosTodos=$dbJSON->abrirRegistro();
-  dd($usuariosTodos);
-  $resultado = $dbJSON->buscarDatos($usuariosTodos,$email);
-  if($resultado){
-    if(password_verify($datos["password"],$resultado["password"])==true){
-      Autenticador::seteoUsuario();
-      // $_SESSION["nombre"]=$resultado["nombre"];
-      // $_SESSION["email"]=$resultado["email"];
-      // $_SESSION["avatar"]=$resultado["avatar"];
-      // $_SESSION["perfil"]=$resultado["perfil"];
-      if (isset($datos["remember"])) {
-        Autenticador::seteoCookies();
-        // setcookie("email",$datos["email"], time() + 60*60*24);
-        // setcookie("password", $datos["password"], time()+ 60*60*24);
+  $errores=$usuario->validarLogin($usuario);
+  if (count($errores)==0) {
+    $resultado = $usuario->buscarEmail($usuario->getEmail());
+    if($resultado){
+      if(password_verify($usuario->getPassword(),$resultado["password"])==true){
+        Autenticador::seteoUsuario($resultado);
+        if (isset($datos["remember"])) {
+          Autenticador::seteoCookies();
+        }
+        redirect("index.php");
+      }else {
+        $errores[]="Clave Incorrecta <br>";
       }
     }else {
-      $errores[]="Clave Incorrecta <br>";
+      $errores[]="Usuario no encontrado <br>";
     }
-  }else {
-    $errores[]="Usuario no encontrado <br>";
+    echo "<p class='alert alert-danger'>";
+    if(isset($errores)){
+      foreach ($errores as $value) {
+        echo $value;
+      }
+    }
+    echo "</p>";
   }
-  echo "<p class='alert alert-danger'>";
-  return $errores;
-  echo "</p>";
 }
-
-// function abrirRegistro(){
-//   if(!file_exists('usuarios.json')){
-//     file_put_contents('usuarios.json',PHP_EOL, FILE_APPEND);
-//   }
-//   $traer= file_get_contents("usuarios.json");
-//   $db = explode(PHP_EOL, $traer);
-//   array_pop($db);
-//   foreach ($db as $usuarioCodificado) {
-//     $decodificado=json_decode($usuarioCodificado, true);
-//     $usuarios[]=$decodificado;
-//   }
-//   return $usuarios;
-// }
-
-// function buscarDatos($usuarios, $email){
-//   foreach ($usuarios as $usuario) {
-//     if ($email == $usuario["email"]) {
-//       return $usuario;
-//       break;
-//     }
-//   }
-// }
-
-if(isset($errores)){
-  foreach ($errores as $value) {
-    echo $value;
-  }
+if (isset($_SESSION["nombre"])) {
+  header("location: index.php");
 }
 ?>
 

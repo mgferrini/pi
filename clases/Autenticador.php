@@ -1,6 +1,6 @@
 <?php
 class Autenticador{
-  static public function seteoUsuario(){
+  static public function seteoUsuario($resultado){
     $_SESSION["nombre"]=$resultado["nombre"];
     $_SESSION["email"]=$resultado["email"];
     $_SESSION["avatar"]=$resultado["avatar"];

@@ -1,5 +1,4 @@
 <?php
-require_once("helpers.php");
 require_once("clases/Usuario.php");
 require_once("clases/Validador.php");
 require_once("clases/Autenticador.php");
