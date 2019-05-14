@@ -8,14 +8,12 @@ class Usuario{
     private $perfil;
     private $tabla;
  
-    public function __construct($email, $password, $nombre=null, $apellido = null, $avatar =null,$tabla =null){  
+    public function __construct($email, $password, $nombre=null, $apellido = null, $avatar =null){  
         $this->email = $email;
         $this->password = $password;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->avatar = $avatar;
-        $this->tabla = $tabla;
-
     }
     public function getNombre(){
         return $this->nombre;
@@ -67,13 +65,13 @@ public function validarRegistro ($usuario,$repassword){
     $nombre = trim($usuario->getNombre());
     if(isset($nombre)){
         if(empty($nombre)){
-            $errores["nombre"]= "El campo nombre no debe estar vacio";
+            $errores["nombre"]= "Debe introducir el nombre";
         }
     }
     $nombre = trim($usuario->getApellido());
     if(isset($apellido)){
         if(empty($apellido)){
-            $errores["apellido"]= "El campo apellido no debe estar vacio";
+            $errores["apellido"]= "Debe introducir apellido";
         }
     }
     $email = trim($usuario->getEmail());
@@ -85,7 +83,7 @@ public function validarRegistro ($usuario,$repassword){
         $repassword= trim($repassword);
     }
     if(empty($password)){
-        $errores["password"]= "El campo password no debe estar vacío";
+        $errores["password"]= "Debe introducir contraseña";
     }elseif (strlen($password)<6) {
         $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
     }
@@ -102,10 +100,6 @@ public function validarRegistro ($usuario,$repassword){
         if($ext != "png" && $ext != "jpg"){
             $errores["avatar"]="Debe seleccionar archivo png ó jpg";
         }
-    $usuario1 = $this -> buscarEmail($usuario->getEmail());
-    if($usuario1 !== null){
-		$errores["email"]="El usuario ya existe";
-	}
     return $errores;    
 }
 
@@ -135,10 +129,10 @@ public function armarAvatar($imagen){
 ];
 return $registroUsuario;
  }
-
-public function abrirBaseDatos(){
-    if(file_exists("./usuarios.json")){  // VALE: ACA DEBERIA BUSCAR EL NOMBRE EN LA CLASE BASEJSON
-        $baseDatosJson= file_get_contents("./usuarios.json"); // VALE: ACA DEBERIA BUSCAR EL NOMBRE EN LA CLASE BASEJSON
+/*
+public function abrirBaseRegistros(){
+    if(file_exists($tablaUsuarios->getNombreArchivo())){  // VALE: ACA DEBERIA BUSCAR EL NOMBRE EN LA CLASE BASEJSON
+        $baseDatosJson= file_get_contents(tablaUsuarios->getNombreArchivo()); // VALE: ACA DEBERIA BUSCAR EL NOMBRE EN LA CLASE BASEJSON
         $baseDatosJson = explode(PHP_EOL,$baseDatosJson);
         array_pop($baseDatosJson);
         foreach ($baseDatosJson as  $usuarios) {
@@ -150,7 +144,7 @@ public function abrirBaseDatos(){
     }    
 }
 public function buscarEmail($email){
-    $usuarios = $this->abrirBaseDatos();
+    $usuarios = $tablaUsuarios->abrirBaseRegistros();
     if($usuarios!==null){
         foreach ($usuarios as $usuario1) {
             if($email === $usuario1["email"]){
@@ -161,16 +155,26 @@ public function buscarEmail($email){
     
     return null;
 }
+
 public function guardar($registro){
     $jsusuario = json_encode($registro);
     file_put_contents("./usuarios.json",$jsusuario. PHP_EOL, FILE_APPEND); //VALE: ACA DEBERIA BUSCAR EL NOMBRE EN LA CLASE BASEJSON
-}
+}*/
 public function hashPassword ($password){
     return password_hash($password,PASSWORD_DEFAULT);
 }
 public function verificarPassword($password,$passwordHash){
     return password_verify($password,$passwordHash);
 }
+
+static public function seteoUsuario($user){
+    $_SESSION["nombre"]=$user["nombre"];
+	$_SESSION["email"] = $user["email"];
+	$_SESSION["perfil"]= $user["perfil"];
+    $_SESSION["avatar"]= $user["avatar"];
+}
+
+
 }
 
 
