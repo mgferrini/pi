@@ -14,35 +14,37 @@ class BaseJSON extends BaseDatos{
     $jsusuario = json_encode($registro);
     file_put_contents($this->nombreArchivo ,$jsusuario. PHP_EOL, FILE_APPEND);
   }
-  public function abrirRegistro(){
-    if(file_exists($this->$nombreArchivo)){
-      $traer= file_get_contents($this->$nombreArchivo);
-      $db = explode(PHP_EOL, $traer);
-      array_pop($db);
-      foreach ($db as $usuarioCodificado) {
-        $decodificado=json_decode($usuarioCodificado, true);
-        $usuarios[]=$decodificado;
+  public function abrirBaseRegistro(){
+    if(file_exists($this->nombreArchivo)){
+      $baseDatosJson= file_get_contents($this->nombreArchivo);
+      $baseDatosJson = explode(PHP_EOL,$baseDatosJson);
+      array_pop($baseDatosJson);
+      foreach ($baseDatosJson as  $usuarios) {
+        $arrayUsuarios[]= json_decode($usuarios,true);
       }
-      return $usuarios;
-    }
-  }
-  public function buscarDatos($usuarios, $email){
-    foreach ($usuarios as $usuario) {
-      if ($email == $usuario->getEmail()) {
-        return $usuario;
-        break;
-      }
+      return $arrayUsuarios;
+    }else{
+      return null;
     }
   }
 
+  public function buscarEmail($email){
+    $usuarios = $this->abrirBaseRegistro();
+    if($usuarios!==null){
+      foreach ($usuarios as $usuario) {
+        if($email === $usuario["email"]){
+          return $usuario;
+        }
+      }
+    }
 
-public function leer(){
-  //A futuro trabajaremos en esto
-}
-public function actualizar(){
-  //A futuro trabajaremos en esto
-}
-public function borrar(){
-  //A futuro trabajaremos en esto
-}
-}
+    public function leer(){
+      //A futuro trabajaremos en esto
+    }
+    public function actualizar(){
+      //A futuro trabajaremos en esto
+    }
+    public function borrar(){
+      //A futuro trabajaremos en esto
+    }
+  }

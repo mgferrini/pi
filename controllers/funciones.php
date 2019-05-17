@@ -7,7 +7,9 @@ require_once("helpers.php");
 require_once("./clases/Usuario.php");
 require_once("../clases/Autenticador.php");
 require_once("../clases/BaseDatos.php");
+require_once("../clases/BaseJSON.php");
 
+$tablaUsuarios=new BaseJSON("usuarios.json");
 /* VALE: Esto ahora esta en helpers:
 function dd($valor){
 	echo "<pre>";
