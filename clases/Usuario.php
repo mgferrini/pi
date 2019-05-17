@@ -109,7 +109,6 @@ class Usuario{
     return $errores;
   }
 
-
   public function armarAvatar($imagen){
     $nombre = $imagen["avatar"]["name"];
     $ext = pathinfo($nombre,PATHINFO_EXTENSION);
@@ -148,6 +147,7 @@ class Usuario{
       return $usuarios;
     }
   }
+
   public function buscarEmail($email){
     $usuarios = $this->abrirBaseRegistro();
     if($usuarios!==null){
@@ -177,6 +177,9 @@ class Usuario{
     $email = trim($this->getEmail());
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
       $errores[]="El email ingresado no es el correcto <br>";
+      if (empty($email)){
+        $errores[]="Usuario inexistente";
+      }
     }
     $password= trim($this->getPassword());
     if(empty($password)){
@@ -185,6 +188,5 @@ class Usuario{
     return $errores;
   }
 }
-
 
 ?>
