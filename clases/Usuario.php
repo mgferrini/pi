@@ -8,13 +8,12 @@ class Usuario{
   private $perfil;
   private $tabla;
 
-  public function __construct($email, $password, $nombre=null, $apellido = null, $avatar =null,$tabla =null){
+  public function __construct($email, $password, $nombre=null, $apellido = null, $avatar =null){
     $this->email = $email;
     $this->password = $password;
     $this->nombre = $nombre;
     $this->apellido = $apellido;
     $this->avatar = $avatar;
-    $this->tabla = $tabla;
 
   }
   public function getNombre(){
@@ -67,13 +66,13 @@ class Usuario{
     $nombre = trim($usuario->getNombre());
     if(isset($nombre)){
       if(empty($nombre)){
-        $errores["nombre"]= "El campo nombre no debe estar vacio";
+        $errores["nombre"]= "Debe introducir el nombre";
       }
     }
     $nombre = trim($usuario->getApellido());
     if(isset($apellido)){
       if(empty($apellido)){
-        $errores["apellido"]= "El campo apellido no debe estar vacio";
+        $errores["apellido"]= "Debe introducir apellido";
       }
     }
     $email = trim($usuario->getEmail());
@@ -85,7 +84,7 @@ class Usuario{
       $repassword= trim($repassword);
     }
     if(empty($password)){
-      $errores["password"]= "El campo password no debe estar vacío";
+      $errores["password"]= "Debe introducir contraseña";
     }elseif (strlen($password)<6) {
       $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
     }
@@ -101,10 +100,6 @@ class Usuario{
     $ext = pathinfo($nombre,PATHINFO_EXTENSION);
     if($ext != "png" && $ext != "jpg"){
       $errores["avatar"]="Debe seleccionar archivo png ó jpg";
-    }
-    $usuario1 = $this -> buscarEmail($usuario->getEmail());
-    if($usuario1 !== null){
-      $errores["email"]="El usuario ya existe";
     }
     return $errores;
   }
@@ -135,35 +130,6 @@ class Usuario{
     return $registroUsuario;
   }
 
-  public function abrirBaseRegistro(){
-    if(file_exists($this->nombreArchivo)){
-      $traer= file_get_contents($this->nombreArchivo);
-      $db = explode(PHP_EOL, $traer);
-      array_pop($db);
-      foreach ($db as $usuarioCodificado) {
-        $decodificado=json_decode($usuarioCodificado, true);
-        $usuarios[]=$decodificado;
-      }
-      return $usuarios;
-    }
-  }
-
-  public function buscarEmail($email){
-    $usuarios = $this->abrirBaseRegistro();
-    if($usuarios!==null){
-      foreach ($usuarios as $usuario1) {
-        if($email === $usuario1["email"]){
-          return $usuario1;
-        }
-      }
-    }
-
-    return null;
-  }
-  public function guardar($registro){
-    $jsusuario = json_encode($registro);
-    file_put_contents($this->abrirBaseRegistro(),$jsusuario. PHP_EOL, FILE_APPEND);
-  }
   public function hashPassword ($password){
     return password_hash($password,PASSWORD_DEFAULT);
   }
