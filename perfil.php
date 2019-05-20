@@ -2,11 +2,11 @@
 include_once("controllers/funciones.php");
 
 if ($_POST){
-	$errores=validarPerfil($_POST);
+	$errores=$usuario->validarPerfil($_POST);
 	if(count($errores)==0){
 		//    $avatar = armarAvatar($_FILES);
 		//    $registro = armarRegistro($_POST,$avatar);
-		guardar($_POST);
+		$usuarios->guardarPerfil($_POST);
 
 		header("location: index.php");
 	}else {
@@ -14,15 +14,15 @@ if ($_POST){
 		$perfil['apellido']=$_POST['apellido'];
 		$perfil['email']=$_POST['email'];
 		$perfil['nombre']=$_POST['nombre'];
-		 	
+
 	}
-	
+
 }else {
 //	dd($_SESSION);
- 	$perfil=buscarDatos(abrirRegistro(), $_SESSION['email']);
+ 	$perfil=$usuarios -> buscarEmail($usuario-> getEmail(), $_SESSION['email']);
 // 	dd($perfil);
 }
-
+/*
 function validarPerfil($datos){
 	$errores=[];
 	if(isset($datos["nombre"])){
@@ -54,7 +54,7 @@ function validarPerfil($datos){
 			$errores["repassword"]="Las contraseñas no coinciden";
 		}
 	}
-	
+
 	return $errores;
 }
 
@@ -106,15 +106,15 @@ function guardar($datos){
 				$archivoDestino = $archivoDestino.".".$ext;
 				move_uploaded_file($archivoOrigen,$archivoDestino);
 				$avatar = $avatar.".".$ext;
-				
-				$usuarionuevo["avatar"]= $avatar;	
+
+				$usuarionuevo["avatar"]= $avatar;
 			}
-			
+
 			$_SESSION["nombre"]=$usuarionuevo["nombre"];
 			$_SESSION["email"]=$usuarionuevo["email"];
 			$_SESSION["avatar"]=$usuarionuevo["avatar"];
 			$_SESSION["perfil"]=$usuarionuevo["perfil"];
-			
+
 		}else{
 			$usuarionuevo=$usuario;
 		}
@@ -124,7 +124,7 @@ function guardar($datos){
 		$jsusuario = json_encode($usuario);
 		file_put_contents("usuarios.json", $jsusuario . PHP_EOL, FILE_APPEND );
 	}
-}
+}*/
 ?>
 
 <div class="container regcontainer">
@@ -162,11 +162,7 @@ function guardar($datos){
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label for="fecha">Fecha de Nacimiento</label>
-						<input type="date" class="form-control" id="fecha" name="fecha">
-					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-12">
 						<label for="email">Email *</label>
 						<input type="email" class="form-control" id="email" name="email" readonly value="<?=(isset($perfil["email"]) )? $perfil["email"] : "" ;?>" >
 					</div>
@@ -179,35 +175,6 @@ function guardar($datos){
 					<div class="form-group col-md-6">
 						<label for="inputPassword4">Reconfirmar Contraseña *</label>
 						<input type="password" class="form-control" id="inputPassword4pass" name="repassword" value='' >
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="direccion">Dirección</label>
-					<input type="text" class="form-control" id="direccion" name="direccion">
-				</div>
-				<div class="form-row">
-					<div class="form-group col-md-5">
-						<label for="ciudad">Ciudad</label>
-						<input type="text" class="form-control" id="ciudad" name="ciudad">
-					</div>
-					<div class="form-group col-md-5">
-						<label for="provincia">Provincia</label>
-						<select id="provincia" class="form-control" name="provincia">
-							<?php
-							$provincias=["Seleccionar","Buenos Aires","CABA","Catamarca","Chaco","Chubut","Córdoba","Corrientes","Entre Ríos","Formosa","Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán"];
-							foreach ($provincias as $key =>$value) {
-								if($key==0){
-									echo "<option hidden value='$key'> $value</option>";
-								} else {
-									echo "<option value='$key'> $value</option>";
-								}
-							}
-							?>
-						</select>
-					</div>
-					<div class="form-group col-md-2">
-						<label for="inputZip">Código Postal</label>
-						<input type="text" class="form-control" id="inputZip">
 					</div>
 				</div>
 				<div class="regSubirAvatar"> * Imagen de Perfil:
