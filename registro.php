@@ -11,7 +11,7 @@ if ($_POST){
 		$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
 		$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
 		$tablaUsuarios -> guardar($registroUsuario) ;
-		Autenticador::seteoUsuario($registroUsuario); 
+		Autenticador::seteoUsuario($registroUsuario);
 	redirect("index.php");
 	}
 }
@@ -95,5 +95,3 @@ if (isset($_SESSION["nombre"])) {
 		</article>
 	</section>
 </div>
-
-
