@@ -4,12 +4,13 @@ if ($_POST){
 	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES["avatar"]["name"]);
 	$errores=$usuario->validarRegistro($usuario,$_POST["repassword"]);
 	if(count($errores)==0){
-		$usuario1 = BaseMYSQL:: buscarEmail($usuario->getEmail(),$pdo,'users'); // nombre de tabla , va como variable?
+		$tabla = $usuario->setTabla('users');
+		$usuario1 = BaseMYSQL:: buscarEmail($usuario->getEmail(),$pdo,$usuario->getTabla()); // nombre de tabla , va como variable?
 		if($usuario1 == false){
 			$perfil = $usuario ->setPerfil(1);
 			$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
 			//	$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
-			BaseMYSQL:: guardarUsuario($usuario,$avatar, $pdo,'users') ;
+			BaseMYSQL:: guardarUsuario($usuario,$avatar, $pdo,$usuario->getTabla()) ;
 			Autenticador::seteoUsuario($usuario,$avatar);
 			redirect("index.php");
 		}else{
