@@ -4,20 +4,21 @@ if ($_POST){
 	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES["avatar"]["name"]);
 	$errores=$usuario->validarRegistro($usuario,$_POST["repassword"]);
 	if(count($errores)==0){
-		$usuario1 = $tablaUsuarios -> buscarEmail($usuario->getEmail());
-		if($usuario1 !== null){
+		$usuario1 = BaseMYSQL:: buscarEmail($usuario->getEmail(),$pdo,'users'); // nombre de tabla , va como variable?
+		if($usuario1 == false){
+			$perfil = $usuario ->setPerfil(1);
+			$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
+			//	$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
+			BaseMYSQL:: guardarUsuario($usuario,$avatar, $pdo,'users') ;
+			Autenticador::seteoUsuario($usuario,$avatar);
+			redirect("index.php");
+		}else{
 			$errores["email"]="Usuario ya registrado";
-			}else{
-		$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
-		$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
-		$tablaUsuarios -> guardar($registroUsuario) ;
-		Autenticador::seteoUsuario($registroUsuario);
-	redirect("index.php");
+		}
 	}
-}
-if (isset($_SESSION["nombre"])) {
-	redirect("index.php");
-}
+	if (isset($_SESSION["nombre"])) {
+		redirect("index.php");
+	}
 }
 ?>
 
