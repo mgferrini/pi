@@ -14,6 +14,7 @@ class Usuario{
     $this->nombre = $nombre;
     $this->apellido = $apellido;
     $this->avatar = $avatar;
+    $this->perfil = $perfil;
 
   }
   public function getNombre(){
@@ -117,8 +118,8 @@ class Usuario{
     $avatar = $avatar.".".$ext;
     return $avatar;
   }
-
-  public function armarRegistro($usuario,$avatar){
+/*
+  public function armarRegistro($usuario,$avatar){  // esta se fue a mysql con insert into
     $registroUsuario = [
     "nombre"=>$usuario->getNombre(),
     "apellido"=>$usuario->getApellido(),
@@ -128,7 +129,7 @@ class Usuario{
     "perfil"=>1
     ];
     return $registroUsuario;
-  }
+  }*/
 
   public function hashPassword ($password){
     return password_hash($password,PASSWORD_DEFAULT);
@@ -176,7 +177,7 @@ public function abrirRegistro(){  // esta no se deberia usar: tenemos que usar l
   }
   }
   }
-  function guardarPerfil($datos){
+  function guardarPerfil($datos){ // ESTO NO VA ACA 
   $email =$datos["email"];
 	$newpass=$datos["password"];
 	$usuarios = $this->abrirRegistro();
