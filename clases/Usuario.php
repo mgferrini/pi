@@ -14,7 +14,6 @@ class Usuario{
     $this->nombre = $nombre;
     $this->apellido = $apellido;
     $this->avatar = $avatar;
-    $this->perfil = $perfil;
 
   }
   public function getNombre(){
