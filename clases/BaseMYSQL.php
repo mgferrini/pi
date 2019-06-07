@@ -12,14 +12,14 @@ class BaseMYSQL extends BaseDatos{
             exit;
         }
     }
-    static public function guardarUsuario($usuario,$avatar,$pdo,$tabla){
+    static public function guardarUsuario($usuario,$pdo,$tabla){
       $sql="insert into $tabla (id, first_name, last_name, email, password, avatar, profile)  values (default, :first_name,:last_name,:email,:password,:avatar, :profile)";
       $query=$pdo->prepare($sql);
       $query->bindValue(':first_name',$usuario->getNombre());
       $query->bindValue(':last_name',$usuario->getApellido());
       $query->bindValue(':email',$usuario->getEmail());
       $query->bindValue(':password',$usuario->hashPassword($usuario->getPassword()));
-      $query->bindValue(':avatar',$avatar);
+      $query->bindValue(':avatar',$usuario->getAvatar());
       $query->bindValue('profile',$usuario->getPerfil());
       $query->execute();
       }
@@ -36,28 +36,6 @@ class BaseMYSQL extends BaseDatos{
 
      
 
-       /*$usuarios = $this->abrirBaseRegistro();
-        if($usuarios!==null){
-          foreach ($usuarios as $usuario) {
-            if($email === $usuario["email"]){
-              return $usuario;
-            }
-          }
-        }
-      }
-      public function abrirBaseRegistro(){  // esta cambia a mysql a select
-        if(file_exists($this->nombreArchivo)){
-          $baseDatosJson= file_get_contents($this->nombreArchivo);
-          $baseDatosJson = explode(PHP_EOL,$baseDatosJson);
-          array_pop($baseDatosJson);
-          foreach ($baseDatosJson as  $usuarios) {
-            $arrayUsuarios[]= json_decode($usuarios,true);
-          }
-          return $arrayUsuarios;
-        }else{
-          return null;
-        }
-      }*/
       public function leer(){
         //A futuro trabajaremos en esto
       }

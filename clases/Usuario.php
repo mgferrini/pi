@@ -117,18 +117,17 @@ class Usuario{
     $avatar = $avatar.".".$ext;
     return $avatar;
   }
-/*
-  public function armarRegistro($usuario,$avatar){  // esta se fue a mysql con insert into
+  public function armarRegistro($usuario){
     $registroUsuario = [
-    "nombre"=>$usuario->getNombre(),
+    "first_name"=>$usuario->getNombre(),
     "apellido"=>$usuario->getApellido(),
     "email"=>$usuario->getEmail(),
     "password"=> $this->hashPassword($usuario->getPassword()),
-    "avatar"=>$avatar,
-    "perfil"=>1
+    "avatar"=>$usuario->getAvatar(),
+    "profile"=>$usuario->getPerfil(),
     ];
     return $registroUsuario;
-  }*/
+  }
 
   public function hashPassword ($password){
     return password_hash($password,PASSWORD_DEFAULT);
