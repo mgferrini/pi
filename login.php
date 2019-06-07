@@ -7,10 +7,9 @@ if ($_POST){
     $resultado=BaseMYSQL::buscarEmail($_POST['email'],$pdo,'users');
     if($resultado){
       if(password_verify($usuario->getPassword(),$resultado["password"])==true){
-        Autenticador::seteoUsuario($resultado,$usuario);
-        if (isset($datos["remember"])) {
-          dd($datos);
-          Autenticador::seteoCookies();
+        Autenticador::seteoUsuario($resultado);
+        if (isset($_POST["remember"])) {
+          Autenticador::seteoCookies($_POST);
         }
         redirect("index.php");
       }else {
@@ -50,7 +49,7 @@ if (isset($_SESSION["nombre"])) {
                 <input class="form-control" placeholder="E-mail" name="email" type="text" value="<?=isset($_COOKIE["email"])?$_COOKIE["email"] : "" ;?>">
               </div>
               <div class="form-group">
-                <input class="form-control" placeholder="Password" name="password" type="password" value="<?=isset($_COOKIE["password"])?$_COOKIE["password"] : "" ;?>">
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
               </div>
               <div class="checkbox">
                 <label>

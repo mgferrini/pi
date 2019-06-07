@@ -1,13 +1,12 @@
 <?php
 class Autenticador{
-  static public function seteoUsuario($resultado,$avatar){
+  static public function seteoUsuario($resultado){
     $_SESSION["nombre"] = $resultado["first_name"];
     $_SESSION["email"] = $resultado["email"];
     $_SESSION["avatar"] = $resultado["avatar"];
     $_SESSION["perfil"] = $resultado["profile"];
   }
-  static public function seteoCookies(){
-    setcookie("email",$resultado["email"], time() + 60*60*24);
-    setcookie("password", $resultado["password"], time()+ 60*60*24);
+  static public function seteoCookies($datos){
+    setcookie("email",$datos["email"], time() + 60*60*24);
   }
 }

@@ -13,14 +13,14 @@ class BaseMYSQL extends BaseDatos{
     }
   }
 
-  static public function guardarUsuario($usuario,$avatar,$pdo,$tabla){
+  static public function guardarUsuario($usuario,$pdo,$tabla){
     $sql="insert into $tabla (id, first_name, last_name, email, password, avatar, profile)  values (default, :first_name,:last_name,:email,:password,:avatar, :profile)";
     $query=$pdo->prepare($sql);
     $query->bindValue(':first_name',$usuario->getNombre());
     $query->bindValue(':last_name',$usuario->getApellido());
     $query->bindValue(':email',$usuario->getEmail());
     $query->bindValue(':password',$usuario->hashPassword($usuario->getPassword()));
-    $query->bindValue(':avatar',$avatar);
+    $query->bindValue(':avatar',$usuario->getAvatar());
     $query->bindValue('profile',$usuario->getPerfil());
     $query->execute();
   }
@@ -30,11 +30,10 @@ class BaseMYSQL extends BaseDatos{
     $query = $pdo->prepare($sql);
     $query->bindValue(':email',$email);
     $query -> execute();
-    // dd($query);
     $userFound = $query -> fetch(PDO::FETCH_ASSOC);
     return $userFound;
-
   }
+
   public function leer(){
     //A futuro trabajaremos en esto
   }
