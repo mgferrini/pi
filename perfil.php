@@ -2,13 +2,12 @@
 include_once("controllers/funciones.php");
 
 if ($_POST){
-	$errores=$usuario->validarPerfil($_POST);
+	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES["avatar"]["name"]);
+	$errores=$usuario->validarRegistro($usuario,$_POST["repassword"]);
 	if(count($errores)==0){
-		//    $avatar = armarAvatar($_FILES);
-		//    $registro = armarRegistro($_POST,$avatar);
-		$usuarios->guardarPerfil($_POST);
+		$usuario -> guardarPerfil($_POST);
 
-		header("location: index.php");
+		redirect("index.php");
 	}else {
 		$perfil['nombre']=$_POST['nombre'];
 		$perfil['apellido']=$_POST['apellido'];
@@ -18,113 +17,9 @@ if ($_POST){
 	}
 
 }else {
-//	dd($_SESSION);
- 	$perfil=$usuarios -> buscarEmail($usuario-> getEmail(), $_SESSION['email']);
-// 	dd($perfil);
-}
-/*
-function validarPerfil($datos){
-	$errores=[];
-	if(isset($datos["nombre"])){
-		$nombre = trim($datos["nombre"]);
-		if(empty($nombre)){
-			$errores["nombre"]= "Debe introducir el nombre";
-		}
-	}
-	if(isset($datos["apellido"])){
-		$apellido = trim($datos["apellido"]);
-	}
-
-	$email = trim($datos["email"]);
-	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-		$errores["email"]="Email invalido";
-	}
-	$password= trim($datos["password"]);
-	if(isset($datos["repassword"])){
-		$repassword = trim($datos["repassword"]);
-	}
-
-	if(empty($password)){
-		$errores["password"]= "Debe introducir contraseña";
-	}elseif (strlen($password)<6) {
-		$errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
-	}
-	if(isset($datos["repassword"])){
-		if ($password != $repassword) {
-			$errores["repassword"]="Las contraseñas no coinciden";
-		}
-	}
-
-	return $errores;
+ 	$perfil=$tablaUsuarios -> buscarEmail($_SESSION['email']);
 }
 
-function abrirRegistro(){
-  $traer= file_get_contents("usuarios.json");//Traer el archivo
-  $db = explode(PHP_EOL, $traer);//aca lo separas
-  array_pop($db);//Sacas el ultimo elemento
-  foreach ($db as $usuarioCodificado) {//despues recorres lo que cambiaste y lo guardas en una variable
-    $decodificado=json_decode($usuarioCodificado, true);//Y esa variable la decodificas
-    $usuarios[]=$decodificado;// despues poner sus datos en alguna variable
-  }
-  return $usuarios;// abrirRegistro(); esta funcion podria devolverte un array con el usuario si lo encontro
-}
-
-function buscarDatos($usuarios, $email){// aca tenes que ir a buscar el usuario en el archivo json
-  foreach ($usuarios as $usuario) {
-    if ($email == $usuario["email"]) {
-      return $usuario;
-      break;
-    }
-  }
-}
-
-function guardar($datos){
-	$email =$datos["email"];
-	$newpass=$datos["password"];
-	$usuarios=abrirRegistro();
-//	dd($usuarios);
-	$usuariosnuevos=[];
-	unlink("usuarios.json");
-	foreach ($usuarios as $usuario) {
-		if($email==$usuario["email"]){
-			$usuarionuevo=[
-			"nombre"=>$datos["nombre"],
-			"email"=>$datos["email"],
-			"password"=>password_hash($newpass,PASSWORD_DEFAULT),
-			"avatar"=>$usuario["avatar"],
-			"perfil"=>$usuario["perfil"],
-			];
-
-			if($_FILES["avatar"]["error"]==0){
-				$nombre = $_FILES["avatar"]["name"];
-				$ext = pathinfo($nombre,PATHINFO_EXTENSION);
-				$archivoOrigen = $_FILES["avatar"]["tmp_name"];
-				$archivoDestino = pathinfo( dirname(__FILE__) )["dirname"].'/'.pathinfo( dirname(__FILE__) )["basename"] ;
-				$archivoDestino = $archivoDestino."/imagenes/";  //esto hay que ponerlo de acuerdo al directorio elegido
-				$avatar = uniqid();
-				$archivoDestino = $archivoDestino.$avatar;
-				$archivoDestino = $archivoDestino.".".$ext;
-				move_uploaded_file($archivoOrigen,$archivoDestino);
-				$avatar = $avatar.".".$ext;
-
-				$usuarionuevo["avatar"]= $avatar;
-			}
-
-			$_SESSION["nombre"]=$usuarionuevo["nombre"];
-			$_SESSION["email"]=$usuarionuevo["email"];
-			$_SESSION["avatar"]=$usuarionuevo["avatar"];
-			$_SESSION["perfil"]=$usuarionuevo["perfil"];
-
-		}else{
-			$usuarionuevo=$usuario;
-		}
-		$usuariosnuevos[]=$usuarionuevo;
-	}
-	foreach ($usuariosnuevos as $usuario) {
-		$jsusuario = json_encode($usuario);
-		file_put_contents("usuarios.json", $jsusuario . PHP_EOL, FILE_APPEND );
-	}
-}*/
 ?>
 
 <div class="container regcontainer">
@@ -141,13 +36,6 @@ function guardar($datos){
 		<h1 class="regh1">Perfil</h1>
 	</section>
 	<section class="registro row">
-		<!--<article class="regcolumna col-xs-12 col-md-4 col-lg-4">
-		<h2 class="regtitulo2"> ¿Ya tenés cuenta?</h2>
-		<br>
-		<a class="btn regboton" href="?page=login" role="button">Ingresar</a>
-		<br><br>
-		<img src="img/soap_0001.jpg" alt="jabon_arte" class="regimg">
-		</article>-->
 		<article class="form regformulario col-xs-12 col-md-8 col-lg-8">
 			<h2 class="regtitulo">Modifica tus datos</h2><br>
 			<form class="datosusuario" action="#" method="POST" enctype= "multipart/form-data"  >

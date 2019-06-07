@@ -117,8 +117,8 @@ class Usuario{
     $avatar = $avatar.".".$ext;
     return $avatar;
   }
-
-  public function armarRegistro($usuario,$avatar){
+/*
+  public function armarRegistro($usuario,$avatar){  // esta se fue a mysql con insert into
     $registroUsuario = [
     "nombre"=>$usuario->getNombre(),
     "apellido"=>$usuario->getApellido(),
@@ -128,7 +128,7 @@ class Usuario{
     "perfil"=>1
     ];
     return $registroUsuario;
-  }
+  }*/
 
   public function hashPassword ($password){
     return password_hash($password,PASSWORD_DEFAULT);
@@ -153,57 +153,22 @@ class Usuario{
     }
     return $errores;
   }
-}
+
 
 // PERFIL ADELA
 
-  function validarPerfil($usuario,$repassword){
-  $errores=array();
-    $nombre = trim($usuario->getNombre());
-    if (isset($nombre)){
-    if(empty($nombre)){
-      $errores["nombre"]= "Debe introducir el nombre";
-    }
+public function abrirRegistro(){  // esta no se deberia usar: tenemos que usar la que esta en BaseJson
+  $traer= file_get_contents("usuarios.json");
+  $db = explode(PHP_EOL, $traer);
+  array_pop($db);
+  foreach ($db as $usuarioCodificado) {
+  $decodificado=json_decode($usuarioCodificado, true);
+  $usuarios[]=$decodificado;
   }
-  $nombre = trim($usuario->getApellido());
-    if(isset($apellido)){
-      if(empty($apellido)){
-        $errores["apellido"]= "Debe introducir apellido";
-      }
-    }
-    $email = trim($usuario->getEmail());
-      if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errores["email"]="Email invalido";
-      }
-      $password= trim($usuario->getPassword());
-      if(isset($repassword)){
-        $repassword= trim($repassword);
-      }
-      if(empty($password)){
-        $errores["password"]= "Debe introducir contraseña";
-      }elseif (strlen($password)<6) {
-        $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
-      }
-      if(isset($repassword)){
-        if ($password != $repassword) {
-          $errores["repassword"]="Las contraseñas no coinciden";
-        }
-      }
-  return $errores;
+  return $usuarios;
   }
 
-  function abrirRegistro(){
-  $traer= file_get_contents("usuarios.json");//Traer el archivo
-  $db = explode(PHP_EOL, $traer);//aca lo separas
-  array_pop($db);//Sacas el ultimo elemento
-  foreach ($db as $usuarioCodificado) {//despues recorres lo que cambiaste y lo guardas en una variable
-  $decodificado=json_decode($usuarioCodificado, true);//Y esa variable la decodificas
-  $usuarios[]=$decodificado;// despues poner sus datos en alguna variable
-  }
-  return $usuarios;// abrirRegistro(); esta funcion podria devolverte un array con el usuario si lo encontro
-  }
-
-  function buscarDatos($usuarios, $email){// aca tenes que ir a buscar el usuario en el archivo json
+  public function buscarDatos($usuarios, $email){  //esta no se deberia usar : tenemos que usar la de BaseJson
   foreach ($usuarios as $usuario) {
   if ($email == $usuario["email"]) {
   return $usuario;
@@ -211,30 +176,32 @@ class Usuario{
   }
   }
   }
+  function guardarPerfil($datos){ // ESTO NO VA ACA 
+  $email =$datos["email"];
+	$newpass=$datos["password"];
+	$usuarios = $this->abrirRegistro();
+	$usuariosnuevos=[];
+	unlink("usuarios.json");
+	foreach ($usuarios as $usuario) {
+		if($datos["email"]==$usuario["email"]){
+			$usuarionuevo=[
+      "nombre"=>$datos["nombre"],
+      "apellido"=>$datos["apellido"],
+			"email"=>$datos["email"],
+			"password"=>password_hash($newpass,PASSWORD_DEFAULT),
+			"avatar"=>$usuario["avatar"],
+			"perfil"=>$usuario["perfil"],
+			];
 
-  function guardarPerfil($usuario){
-  $email =$usuario->getEmail();
-  $newpass=$usuario->getPassword();
-  $usuarios=abrirBaseRegistros();
-  //	dd($usuarios);
-  $usuariosnuevos=[];
-  unlink("usuarios.json");
-  foreach ($usuarios as $usuario1) {
-  if($email==$usuario1->getEmail()){
-    $usuarionuevo=[
-      "nombre"=>$usuario->getNombre(),
-      "email"=>$usuario->getEmail(),
-      "password"=> $this->hashPassword($usuario->getPassword()),
-      "avatar"=>$usuario1["avatar"],
-      "perfil"=>$usuario1["perfil"],
-    ];
 
     if($_FILES["avatar"]["error"]==0){
       $nombre = $_FILES["avatar"]["name"];
       $ext = pathinfo($nombre,PATHINFO_EXTENSION);
       $archivoOrigen = $_FILES["avatar"]["tmp_name"];
-      $archivoDestino = pathinfo( dirname(__FILE__) )["dirname"].'/'.pathinfo( dirname(__FILE__) )["basename"] ;
-      $archivoDestino = $archivoDestino."/imagenes/";  //esto hay que ponerlo de acuerdo al directorio elegido
+      $archivoDestino = dirname(__DIR__);
+      $archivoDestino = $archivoDestino."/imagenes/";
+     // $archivoDestino = pathinfo( dirname(__FILE__) )["dirname"].'/'.pathinfo( dirname(__FILE__) )["basename"] ;
+     // $archivoDestino = $archivoDestino."/imagenes/";  
       $avatar = uniqid();
       $archivoDestino = $archivoDestino.$avatar;
       $archivoDestino = $archivoDestino.".".$ext;
@@ -256,11 +223,11 @@ class Usuario{
   }
   foreach ($usuariosnuevos as $usuario) {
   $jsusuario = json_encode($usuario);
-  file_put_contents("usuarios.json", $jsusuario . PHP_EOL, FILE_APPEND );
+  file_put_contents("usuarios.json", $jsusuario . PHP_EOL, FILE_APPEND ); // nombre de la tabla
   }
   }
-}
 
+}
 
 
 

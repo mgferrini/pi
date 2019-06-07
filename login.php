@@ -4,11 +4,12 @@ if ($_POST){
   $usuario=new Usuario($_POST["email"],$_POST["password"]);
   $errores=$usuario->validarLogin($usuario);
   if (count($errores)==0) {
-    $resultado = $tablaUsuarios->buscarEmail($usuario->getEmail());
+    $resultado=BaseMYSQL::buscarEmail($_POST['email'],$pdo,'users');
     if($resultado){
       if(password_verify($usuario->getPassword(),$resultado["password"])==true){
-        Autenticador::seteoUsuario($resultado);
+        Autenticador::seteoUsuario($resultado,$usuario);
         if (isset($datos["remember"])) {
+          dd($datos);
           Autenticador::seteoCookies();
         }
         redirect("index.php");
