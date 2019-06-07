@@ -1,17 +1,18 @@
 <?php
 include_once("controllers/funciones.php");
 if ($_POST){
-	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES["avatar"]["name"]);
+	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES);
 	$errores=$usuario->validarRegistro($usuario,$_POST["repassword"]);
 	if(count($errores)==0){
 		$tabla = $usuario->setTabla('users');
-		$usuario1 = BaseMYSQL:: buscarEmail($usuario->getEmail(),$pdo,$usuario->getTabla()); // nombre de tabla , va como variable?
+		$usuario1 = BaseMYSQL:: buscarEmail($usuario->getEmail(),$pdo,$usuario->getTabla()); 
 		if($usuario1 == false){
 			$perfil = $usuario ->setPerfil(1);
-			$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
-			//	$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
-			BaseMYSQL:: guardarUsuario($usuario,$avatar, $pdo,$usuario->getTabla()) ;
-			Autenticador::seteoUsuario($usuario,$avatar);
+			$avatar = $usuario->armarAvatar($usuario->getAvatar()); 
+			$avatar = $usuario->setAvatar($avatar);
+			$registroUsuario= $usuario -> armarRegistro($usuario);
+			BaseMYSQL:: guardarUsuario($usuario, $pdo,$usuario->getTabla()) ;
+			Autenticador::seteoUsuario($registroUsuario);
 			redirect("index.php");
 		}else{
 			$errores["email"]="Usuario ya registrado";
