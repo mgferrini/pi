@@ -1,23 +1,26 @@
 <?php
 include_once("controllers/funciones.php");
 if ($_POST){
-	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES["avatar"]["name"]);
+	$usuario = new Usuario ($_POST["email"],$_POST["password"],$_POST["nombre"],$_POST["apellido"],$_FILES);
 	$errores=$usuario->validarRegistro($usuario,$_POST["repassword"]);
 	if(count($errores)==0){
-		$usuario1 = $tablaUsuarios -> buscarEmail($usuario->getEmail());
-		if($usuario1 !== null){
+		$tabla = $usuario->setTabla('users');
+		$usuario1 = BaseMYSQL:: buscarEmail($usuario->getEmail(),$pdo,$usuario->getTabla()); 
+		if($usuario1 == false){
+			$perfil = $usuario ->setPerfil(1);
+			$avatar = $usuario->armarAvatar($usuario->getAvatar()); 
+			$avatar = $usuario->setAvatar($avatar);
+			$registroUsuario= $usuario -> armarRegistro($usuario);
+			BaseMYSQL:: guardarUsuario($usuario, $pdo,$usuario->getTabla()) ;
+			Autenticador::seteoUsuario($registroUsuario);
+			redirect("index.php");
+		}else{
 			$errores["email"]="Usuario ya registrado";
-			}else{
-		$avatar = $usuario->armarAvatar($_FILES); //aca deberia mandar $usuario -> getAvatar() ??? porque no funciona
-		$registroUsuario= $usuario -> armarRegistro($usuario,$avatar);
-		$tablaUsuarios -> guardar($registroUsuario) ;
-		Autenticador::seteoUsuario($registroUsuario);
-	redirect("index.php");
+		}
 	}
-}
-if (isset($_SESSION["nombre"])) {
-	redirect("index.php");
-}
+	if (isset($_SESSION["nombre"])) {
+		redirect("index.php");
+	}
 }
 ?>
 

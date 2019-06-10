@@ -14,8 +14,8 @@ class Usuario{
     $this->nombre = $nombre;
     $this->apellido = $apellido;
     $this->avatar = $avatar;
-
   }
+
   public function getNombre(){
     return $this->nombre;
   }
@@ -118,14 +118,14 @@ class Usuario{
     return $avatar;
   }
 
-  public function armarRegistro($usuario,$avatar){
+  public function armarRegistro($usuario){
     $registroUsuario = [
-    "nombre"=>$usuario->getNombre(),
+    "first_name"=>$usuario->getNombre(),
     "apellido"=>$usuario->getApellido(),
     "email"=>$usuario->getEmail(),
     "password"=> $this->hashPassword($usuario->getPassword()),
-    "avatar"=>$avatar,
-    "perfil"=>1
+    "avatar"=>$usuario->getAvatar(),
+    "profile"=>$usuario->getPerfil(),
     ];
     return $registroUsuario;
   }
@@ -133,6 +133,7 @@ class Usuario{
   public function hashPassword ($password){
     return password_hash($password,PASSWORD_DEFAULT);
   }
+
   public function verificarPassword($password,$passwordHash){
     return password_verify($password,$passwordHash);
   }
@@ -154,81 +155,60 @@ class Usuario{
     return $errores;
   }
 
+  // PERFIL ADELA
 
-// PERFIL ADELA
-
-public function abrirRegistro(){  // esta no se deberia usar: tenemos que usar la que esta en BaseJson
-  $traer= file_get_contents("usuarios.json");
-  $db = explode(PHP_EOL, $traer);
-  array_pop($db);
-  foreach ($db as $usuarioCodificado) {
-  $decodificado=json_decode($usuarioCodificado, true);
-  $usuarios[]=$decodificado;
-  }
-  return $usuarios;
-  }
-
-  public function buscarDatos($usuarios, $email){  //esta no se deberia usar : tenemos que usar la de BaseJson
-  foreach ($usuarios as $usuario) {
-  if ($email == $usuario["email"]) {
-  return $usuario;
-  break;
-  }
-  }
-  }
-  function guardarPerfil($datos){
-  $email =$datos["email"];
-	$newpass=$datos["password"];
-	$usuarios = $this->abrirRegistro();
-	$usuariosnuevos=[];
-	unlink("usuarios.json");
-	foreach ($usuarios as $usuario) {
-		if($datos["email"]==$usuario["email"]){
-			$usuarionuevo=[
-      "nombre"=>$datos["nombre"],
-      "apellido"=>$datos["apellido"],
-			"email"=>$datos["email"],
-			"password"=>password_hash($newpass,PASSWORD_DEFAULT),
-			"avatar"=>$usuario["avatar"],
-			"perfil"=>$usuario["perfil"],
-			];
-
-
-    if($_FILES["avatar"]["error"]==0){
-      $nombre = $_FILES["avatar"]["name"];
-      $ext = pathinfo($nombre,PATHINFO_EXTENSION);
-      $archivoOrigen = $_FILES["avatar"]["tmp_name"];
-      $archivoDestino = dirname(__DIR__);
-      $archivoDestino = $archivoDestino."/imagenes/";
-     // $archivoDestino = pathinfo( dirname(__FILE__) )["dirname"].'/'.pathinfo( dirname(__FILE__) )["basename"] ;
-     // $archivoDestino = $archivoDestino."/imagenes/";  
-      $avatar = uniqid();
-      $archivoDestino = $archivoDestino.$avatar;
-      $archivoDestino = $archivoDestino.".".$ext;
-      move_uploaded_file($archivoOrigen,$archivoDestino);
-      $avatar = $avatar.".".$ext;
-
-      $usuarionuevo["avatar"]= $avatar;
+  public function buscarDatos($usuarios, $email){
+    foreach ($usuarios as $usuario) {
+      if ($email == $usuario["email"]) {
+        return $usuario;
+        break;
+      }
     }
-
-    $_SESSION["nombre"]=$usuarionuevo["nombre"];
-    $_SESSION["email"]=$usuarionuevo["email"];
-    $_SESSION["avatar"]=$usuarionuevo["avatar"];
-    $_SESSION["perfil"]=$usuarionuevo["perfil"];
-
-  }else{
-    $usuarionuevo=$usuario;
-  }
-  $usuariosnuevos[]=$usuarionuevo;
-  }
-  foreach ($usuariosnuevos as $usuario) {
-  $jsusuario = json_encode($usuario);
-  file_put_contents("usuarios.json", $jsusuario . PHP_EOL, FILE_APPEND ); // nombre de la tabla
-  }
   }
 
+  function guardarPerfil($datos){
+    $email =$datos["email"];
+    $newpass=$datos["password"];
+    $usuarios = $this->abrirRegistro();
+    $usuariosnuevos=[];
+    unlink("usuarios.json");
+    foreach ($usuarios as $usuario) {
+      if($datos["email"]==$usuario["email"]){
+        $usuarionuevo=[
+          "nombre"=>$datos["nombre"],
+          "apellido"=>$datos["apellido"],
+          "email"=>$datos["email"],
+          "password"=>password_hash($newpass,PASSWORD_DEFAULT),
+          "avatar"=>$usuario["avatar"],
+          "perfil"=>$upsuario["perfil"],
+        ];
+
+        if($_FILES["avatar"]["error"]==0){
+          $nombre = $_FILES["avatar"]["name"];
+          $ext = pathinfo($nombre,PATHINFO_EXTENSION);
+          $archivoOrigen = $_FILES["avatar"]["tmp_name"];
+          $archivoDestino = dirname(__DIR__);
+          $archivoDestino = $archivoDestino."/imagenes/";
+          $avatar = uniqid();
+          $archivoDestino = $archivoDestino.$avatar;
+          $archivoDestino = $archivoDestino.".".$ext;
+          move_uploaded_file($archivoOrigen,$archivoDestino);
+          $avatar = $avatar.".".$ext;
+          $usuarionuevo["avatar"]= $avatar;
+        }
+        $_SESSION["nombre"]=$usuarionuevo["nombre"];
+        $_SESSION["email"]=$usuarionuevo["email"];
+        $_SESSION["avatar"]=$usuarionuevo["avatar"];
+        $_SESSION["perfil"]=$usuarionuevo["perfil"];
+      }else{
+        $usuarionuevo=$usuario;
+      }
+      $usuariosnuevos[]=$usuarionuevo;
+    }
+    foreach ($usuariosnuevos as $usuario) {
+      $jsusuario = json_encode($usuario);
+      file_put_contents("usuarios.json", $jsusuario . PHP_EOL, FILE_APPEND );
+    }
+  }
 }
-
-
-
 ?>
