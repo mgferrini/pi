@@ -34,6 +34,18 @@ class BaseMYSQL extends BaseDatos{
     return $userFound;
   }
 
+  public function guardarPerfil($usuario,$pdo, $tabla){
+    $sql="update $tabla set first_name = :first_name, last_name = :last_name, password = :password, avatar= :avatar, profile=:profile where email= :email;";
+    $query=$pdo->prepare($sql);
+    $query->bindValue(':first_name',$usuario->getNombre());
+    $query->bindValue(':last_name',$usuario->getApellido());
+    $query->bindValue(':email',$usuario->getEmail());
+    $query->bindValue(':password',$usuario->hashPassword($usuario->getPassword()));
+    $query->bindValue(':avatar',$usuario->getAvatar());
+    $query->bindValue(':profile',$usuario->getPerfil());
+    $query->execute();
+  }
+
   public function leer(){
     //A futuro trabajaremos en esto
   }

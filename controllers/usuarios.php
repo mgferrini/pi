@@ -2,7 +2,6 @@
 
 function validarRegistro($datos){
 	$errores = [];
-	
 	$nombre = trim($datos["nombre"]);
 	if (empty($nombre)){
 		$errores["nombre"]="Complete su nombre";
@@ -13,8 +12,8 @@ function validarRegistro($datos){
 		$errores["email"]="Complete el email";
 	}elseif (!filter_var($email,    FILTER_VALIDATE_EMAIL)){
 		$errores["email"]="Email  invlido";
-
 	}
+
 	$password = trim($datos["password"]);
 	$repassword = trim($datos["repassword"]);
 	if(empty($password)){
@@ -24,7 +23,6 @@ function validarRegistro($datos){
 	}elseif ($password != $repassword) {
 		$errores["repassword"]= "Hermano querido no coinciden las contraseas";
 	}
-	
 
 	if(isset($_FILES["avatar"])){
 		if($_FILES["avatar"]["error"] != UPLOAD_ERR_OK ){
@@ -34,10 +32,8 @@ function validarRegistro($datos){
 		$ext = pathinfo($nombre, PATHINFO_EXTENSION);
 		if($ext!='jpg' && $ext!='png'){
 			$errores["avatar"]= "imagen invalida";
-		
 		}
-	}										
-
+	}
 	return $errores;
 }
 
@@ -55,7 +51,7 @@ function crearAvatar($imagen){
 	$destino = dirname(__DIR__) . '/imagenes/' . uniqid() . '.' . $ext;
 	$resultado = move_uploaded_file($archivoTmp,$destino);
 	var_dump($resultado);
-	
+
 	return $destino;
 }
 
